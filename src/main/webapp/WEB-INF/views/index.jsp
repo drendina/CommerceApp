@@ -10,7 +10,7 @@
     <body>
         <div id="header">
             <div id="logo">
-                <%--<div id="imgLogo" class="floating"> <img src="/risorse/img/Gucci-Logo.png"></div>--%>
+                <div id="imgLogo" class="floating"> <img src="/risorse/img/Gucci-Logo.png"></div>
                 <div id="language" class="floating">
                     <a class="flags" id="italianFlag" href="/index/changeLanguageItalian"><img border="0" alt="Italian" src="/risorse/img/italy.png" width="32" height="24"></a>
                     <a class="flags" href="/index/changeLanguageEnglish"><img border="0" alt="English" src="/risorse/img/uk.png" width="32" height="24"></a>
@@ -60,7 +60,7 @@
             <div id="mustache">
                 <script id="template" type="x-tmpl-mustache">
                     <div>
-                        <a href="/sku/productDetails?idProduct={{idProduct}}"><img src="/risorse/img/{{image}}" width="100" height="100"></a>
+                        <a href="/sku/productDetails?idProduct={{idProduct}}"><img src="/risorse/img/{{image}}" width="200" height="200"></a>
                         <span>
                             {{name}}
                             {{colore}}

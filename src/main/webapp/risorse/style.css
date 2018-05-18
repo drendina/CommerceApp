@@ -5,10 +5,32 @@ body{
 
 #header{
     height: 100px;
+    background-color: burlywood;
 }
 #nav{
     height: 500px;
+    background-color: lavender;
 }
 #footer{
     height: 100px;
+    background-color: #9bcaff;
 }
+ .floating{
+     float: left;
+ }
+ #logo{
+     width: 50%;
+ }
+ #cart{
+     width: 20%;
+ }
+ #login{
+     width: 30%;
+ }
+ #imgLogo{
+     width: 50%;
+ }
+ #imgLogo img{
+     max-width: 100%;
+
+ }
