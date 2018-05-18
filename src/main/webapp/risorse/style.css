@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+    padding: 30px;
+}
+
+#header{
+    height: 100px;
+}
+#nav{
+    height: 500px;
+}
+#footer{
+    height: 100px;
+}
