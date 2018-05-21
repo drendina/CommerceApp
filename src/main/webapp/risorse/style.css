@@ -4,12 +4,13 @@ body{
 }
 
 #header{
-    height: 100px;
+
     background-color: burlywood;
 }
 #nav{
     height: 500px;
     background-color: lavender;
+    padding: 50px;
 }
 #footer{
     height: 100px;
@@ -33,4 +34,11 @@ body{
  #imgLogo img{
      max-width: 100%;
 
+ }
+ .product{
+     width: 50%;
+ }
+ .prodImage:hover{
+     height: 450px;
+     width: 450px;
  }

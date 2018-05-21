@@ -2,6 +2,9 @@ package com.sopra.service;
 
 import com.sopra.model.Sku;
 
+import java.util.List;
+
 public interface SkuService {
-    Sku retrieveSkuById(int idProduct);
+    Sku retrieveSkuByIdProduct(int idProduct);
+    List getListSkuById (int idProduct);
 }

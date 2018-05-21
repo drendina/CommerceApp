@@ -1,7 +1,9 @@
 package com.sopra.facade.Impl;
 
 import com.sopra.facade.CartFacade;
+import com.sopra.service.CartService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -17,9 +19,12 @@ public class CartFacadeImpl implements CartFacade {
 //    il controller riceverà dal facade il cartData con dentro una lista di ItemData
     private static final Logger logger = Logger.getLogger(CartFacadeImpl.class);
 
+    @Autowired
+    private CartService cartService;
     @Override
-    public void addToCart (){
-
+    public void addToCart (int idSku, int idCart){
+        logger.info("create and insert into");
+        cartService.createAndInsertInto(idSku, idCart);
     }
 
 }

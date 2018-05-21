@@ -22,6 +22,15 @@ public class Cart implements Serializable {
     @Column
     private int idUser;
 
+    public Cart() {
+        this.amount = 0;
+    }
+
+    public Cart(int idUser) {
+        this.amount = 0;
+        this.idUser = idUser;
+    }
+
     public int getIdCart() {
         return idCart;
     }

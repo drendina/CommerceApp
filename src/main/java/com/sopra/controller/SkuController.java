@@ -19,18 +19,18 @@ public class SkuController {
 
     @Autowired
     private SkuFacade skuFacade;
-    @RequestMapping(value = "/productDetails")
-    public ModelAndView deployHomepage(@RequestParam int idProduct ){
-        logger.info("Deploying productDetailsPage");
-        logger.info(idProduct);
-
-        Sku temp = retrieveSkuById(idProduct);
-        logger.info("Find: " + temp);
-
-        return new ModelAndView("productDetails", "sku" , temp);
-    }
-
-    public Sku retrieveSkuById(int idProduct){
-        return skuFacade.retrieveSkuById(idProduct);
-    }
+//    @RequestMapping(value = "/productDetails")
+//    public ModelAndView deployHomepage(@RequestParam int idProduct ){
+//        logger.info("Deploying productDetailsPage");
+//        logger.info(idProduct);
+//
+//        Sku temp = retrieveSkuById(idProduct);
+//        logger.info("Find: " + temp);
+//
+//        return new ModelAndView("productDetails", "sku" , temp);
+//    }
+//
+//    public Sku retrieveSkuById(int idProduct){
+//        return skuFacade.retrieveSkuById(idProduct);
+//    }
 }
