@@ -1,5 +1,8 @@
 package com.sopra.data;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class SkuData {
 
     private int idSku;

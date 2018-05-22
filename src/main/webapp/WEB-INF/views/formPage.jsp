@@ -7,7 +7,6 @@
 <div id="header"></div>
 <div id="nav">
     <div id="form">
-        <%--aggiungere action="formPage/submit" modelAttribute="completeUserForm"--%>
         <form:form method="POST" action="/form/submit" modelAttribute="completeUserForm" >
             <form:radiobutton path="title" value="Mr" /> Mr.
             <form:radiobutton path="title" value="Miss" /> Miss

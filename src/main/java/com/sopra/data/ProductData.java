@@ -1,6 +1,8 @@
 package com.sopra.data;
 
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ProductData {
 
     private int idProduct;

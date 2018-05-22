@@ -1,14 +1,18 @@
 package com.sopra.controller;
 
+import com.sopra.data.CartData;
+import com.sopra.data.UserData;
 import com.sopra.facade.CartFacade;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -22,9 +26,17 @@ public class CartController {
     @Autowired
     private CartFacade cartFacade;
     @RequestMapping(value = "/")
-    public ModelAndView deployCartpage() {
+    public ModelAndView deployCartpage(@ModelAttribute("user") UserData userData) {
         logger.info("Deploying Cartpage");
-        return new ModelAndView("cartPage");
+        //TODO RECUPERARE CARRELLO PER CURRENT USER
+        CartData currentCart = cartFacade.getCartByid(userData.getIdUser());
+        List itemList = cartFacade.getProductList(userData.getIdUser());
+
+        ModelAndView mv = new ModelAndView("cartPage");
+                mv.addObject("itemList", itemList);
+                mv.addObject("cUrrentCart", currentCart);
+
+        return mv;
     }
 
     @RequestMapping(value = "/checkout")
@@ -34,10 +46,11 @@ public class CartController {
     }
 
     @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
-    public ModelAndView addToCart() {
+    public ModelAndView addToCart(HttpSession session, @RequestParam int idSku) {
         logger.info("add to cart");
-        int idCart=6;
-        int idSku = 1;
+        int idUser = (int) session.getAttribute("idUser");
+        CartData currentCart = cartFacade.getCartByid(idUser);
+        int idCart = currentCart.getIdCart();
         cartFacade.addToCart(idSku, idCart);
 
         return new ModelAndView("index");

@@ -9,7 +9,7 @@
     
     <body>
         <div id="header">
-            <div id="logo">
+            <div id="logo" class="floating">
                 <div id="imgLogo" class="floating"> <img src="/risorse/img/logo-gucci.png"></div>
                 <div id="language" class="floating">
                     <a class="flags" id="italianFlag" href="/index/changeLanguageItalian"><img border="0" alt="Italian" src="/risorse/img/italy.png" width="32" height="24"></a>
@@ -17,42 +17,45 @@
                 </div>
             </div>
             
-            <div id="cart">
+            <div id="cart" class="floating">
                 <div id="cartImg" class="floating">
-                    <form:form method="GET" action="/cart/" >
-                        <input id="register" type="submit" value="GO TO CART">
-                    </form:form>
+                    <c:choose>
+                        <c:when test="${empty loggedUser.name}">
+                            <form:form method="GET" action="/index/registration" >
+                                <input id="register" type="submit" value="REGISTER">
+                            </form:form>
+                        </c:when>
+                        <c:otherwise>
+                            ${cart}
+                            <form:form method="GET" action="/cart/" >
+                                <input id="register" type="submit" value="GO TO CART">
+                            </form:form>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 <div id="cartQty" class="floating"></div>
             </div>
             
-            <div id="login">
-                <form:form method="GET" action="/index/registration" >
-                    <input id="register" type="submit" value="REGISTER">
-                </form:form>
-  <%--
+            <div id="login" class="floating">
                  <c:choose>
                     <c:when test="${empty loggedUser.name}">
-                        <form:form id="registerForm" method="GET" action="/index/login"  >
+                        <form:form id="registerForm" method="GET" action="/index/login" modelAttribute="user" >
                             Email:<form:input path="email" id="emailInput"/>
                             <br>
                             Password: <form:input path="password" id="pwdInput"/>
                             <input id="submit "type="submit" value="LOGIN">
                         </form:form>
-                        <form:form method="GET" action="/index/registration" >
-                            <input id="register" type="submit" value="REGISTER">
-                        </form:form>
                     </c:when>
                     <c:otherwise>
                         <form:form method="GET" action="/index/logout" id="registerForm">
                             <div>
-                                    ${loggedUser.name} ${loggedUser.surname} : ${loggedUser.role}
-                                <input type="submit" value="<spring:message code="message.logout"/>">
+                                 ${loggedUser.title} ${loggedUser.name} ${loggedUser.surname}
+                                <input type="submit" value="LOGOUT">
                             </div>
                         </form:form>
                     </c:otherwise>
                 </c:choose>
- --%>
+ 
             </div>
         </div>
         
@@ -65,9 +68,6 @@
                             {{name}}
                             {{colore}}
                         </span>
-                        <%--<button><a href="${student_basepath}/modify?id={{id}}"><spring:message code="message.studentIndex_modify"/></a></button>--%>
-                        <%--<button><a href="${student_basepath}/delete?id={{id}}"><spring:message code="message.studentIndex_delete"/></a></button>--%>
-                        <%--<button><a href="${student_basepath}/studentBio?id={{id}}"><spring:message code="message.studentIndex_bio"/></a></button>--%>
                     </div>
             </script>
                 <div id="showData"></div>
@@ -76,18 +76,24 @@
         </div>
         
         <div id="footer">
-            <div id="manage" class="floating">
-                <%--inserire c:choose, nel caso di admin compare il tasto per la gestione del sito, altrimenti il copyright--%>
-                <span>© 2018 Gucci. Inc</span>
+            <div id="manage" class="floating thitrythree">
+               <c:choose>
+                   <c:when test="${loggedUser.role == 'ADMIN'}">
+                       <h6>INSERIRE COLLEGAMENTO A MANAGEMENT PAGE</h6>
+                   </c:when>
+                   <c:otherwise>
+                       <span>Copyright 2018 Gucci. Inc</span>
+                   </c:otherwise>
+               </c:choose>
             </div>
             
-            <div id="contact_us" class="floating">
-                <span> CONTACT US </span>
-                <span>gucci@gucci.com</span>
+            <div id="contact_us" class="floating thitrythree">
+                <span> CONTACT US </span> <br>
+                <span>gucci@gucci.com</span><br>
                 <span>+39 0001234567</span>
             </div>
             
-            <div id="follow_us" class="floating">
+            <div id="follow_us" class="floating thitrythree">
                 <a target="_blank" title="follow me on instagram" href="http://www.instagram.com/gucci/"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>
                 <a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/gucci"><img alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png" border=0></a>
                 <a target="_blank" title="follow me on facebook" href="http://www.facebook.com/GUCCI/"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>

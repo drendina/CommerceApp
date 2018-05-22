@@ -1,20 +1,23 @@
 body{
     margin: 0;
-    padding: 30px;
+
 }
 
 #header{
-
     background-color: burlywood;
+    position: fixed;
+    padding: 0px 50px;
 }
 #nav{
-    height: 500px;
+
     background-color: lavender;
     padding: 50px;
 }
 #footer{
-    height: 100px;
+
     background-color: #9bcaff;
+    position: fixed;
+    width: 100%;
 }
  .floating{
      float: left;
@@ -41,4 +44,8 @@ body{
  .prodImage:hover{
      height: 450px;
      width: 450px;
+ }
+
+ .thitrythree{
+     width: 33%;
  }

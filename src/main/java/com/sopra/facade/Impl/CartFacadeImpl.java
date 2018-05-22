@@ -1,12 +1,15 @@
 package com.sopra.facade.Impl;
 
+import com.sopra.data.CartData;
 import com.sopra.facade.CartFacade;
+import com.sopra.model.Cart;
 import com.sopra.service.CartService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -27,4 +30,14 @@ public class CartFacadeImpl implements CartFacade {
         cartService.createAndInsertInto(idSku, idCart);
     }
 
+    @Override
+    public CartData getCartByid(int idUser) {
+        Cart temp = cartService.getCartById(idUser);
+        return new CartData(temp.getIdCart(), temp.getAmount(), temp.getIdUser());
+    }
+
+    @Override
+    public List getProductList(int idUser) {
+        return cartService.getProductList(idUser);
+    }
 }
