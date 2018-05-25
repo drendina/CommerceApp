@@ -31,6 +31,12 @@ public class CartFacadeImpl implements CartFacade {
     }
 
     @Override
+    public int getCartQty (int idCart) {
+        logger.info("Get cart quantity from cart: " + idCart);
+        return cartService.getCartQty(idCart);
+    }
+
+    @Override
     public CartData getCartByid(int idUser) {
         Cart temp = cartService.getCartById(idUser);
         return new CartData(temp.getIdCart(), temp.getAmount(), temp.getIdUser());

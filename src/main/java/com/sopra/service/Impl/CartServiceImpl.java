@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 @Transactional
 public class CartServiceImpl implements CartService {
+
     private static final Logger logger = Logger.getLogger(CartService.class);
 
     @Autowired
@@ -39,4 +40,10 @@ public class CartServiceImpl implements CartService {
     public List getProductList(int idUser) {
         return cartDAO.getProductList(idUser);
     }
+
+    @Override
+    public int getCartQty(int idCart) {
+        return cartDAO.getCartQty(idCart);
+    }
+
 }

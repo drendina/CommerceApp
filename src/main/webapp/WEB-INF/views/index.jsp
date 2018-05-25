@@ -26,7 +26,7 @@
                             </form:form>
                         </c:when>
                         <c:otherwise>
-                            ${cart}
+                            Elementi nel carrello: ${quantity}
                             <form:form method="GET" action="/cart/" >
                                 <input id="register" type="submit" value="GO TO CART">
                             </form:form>
@@ -100,7 +100,7 @@
             </div>
         </div>
         
-       <script src="/risorse/node_modules/jquery/dist/jquery.js"></script>
+        <script src="/risorse/node_modules/jquery/dist/jquery.js"></script>
         <script src="/risorse/node_modules/mustache/mustache.js"></script>
         <script type="text/javascript" src="/risorse/javascript/index.js"></script>
     </body>

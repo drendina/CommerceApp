@@ -63,12 +63,14 @@
             <h1>CARTPAGE</h1>
             <%--TODO lista di elementi con mustache--%>
             <table>
-                <c:forEach items="${itemList}" var="item">
-                    <tr>
-                        <td> ${item.name} </td>
-                        <td> ${item.price} </td>
-                    </tr>
-                </c:forEach>
+                ${itemList}
+           
+                <%--<c:forEach items="${itemList}" var="item">--%>
+                    <%--<tr>--%>
+                        <%--<td> ${item.name} </td>--%>
+                        <%--<td> ${item.price} </td>--%>
+                    <%--</tr>--%>
+                <%--</c:forEach>--%>
             </table>
         </div>
         

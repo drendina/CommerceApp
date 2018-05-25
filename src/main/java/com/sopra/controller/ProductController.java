@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Controller
 @Transactional
@@ -26,13 +28,18 @@ public class ProductController {
     @RequestMapping(value = "/productDetails")
     public ModelAndView deployProductHomepage(@RequestParam int idProduct ){
         logger.info("Deploying productDetailsPage");
-        logger.info(idProduct);
+        logger.info("idProduct: " + idProduct);
 
         ModelAndView mv = new ModelAndView("productDetails");
         mv.addObject("productData", productDataFacade.getProductDataById(idProduct));
-
         mv.addObject("listaSku", skuFacade.getSkuDataList(idProduct));
-
         return mv;
     }
+
+    @RequestMapping(value = "/getSizes")
+    public @ResponseBody List getAllSizes(int idProduct){
+        logger.info("Getting sizes");
+        return skuFacade.getSkuDataList(idProduct);
+    }
 }
+

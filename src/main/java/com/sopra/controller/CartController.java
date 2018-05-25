@@ -26,11 +26,14 @@ public class CartController {
     @Autowired
     private CartFacade cartFacade;
     @RequestMapping(value = "/")
-    public ModelAndView deployCartpage(@ModelAttribute("user") UserData userData) {
+    public ModelAndView deployCartpage(HttpSession session, @ModelAttribute("user") UserData userData) {
         logger.info("Deploying Cartpage");
-        //TODO RECUPERARE CARRELLO PER CURRENT USER
-        CartData currentCart = cartFacade.getCartByid(userData.getIdUser());
-        List itemList = cartFacade.getProductList(userData.getIdUser());
+        logger.info(session.getAttribute("loggedUser"));
+//        TODO RECUPERARE CARRELLO PER CURRENT USER
+
+        int idUser = ((UserData) session.getAttribute("loggedUser")).getIdUser();
+        CartData currentCart = cartFacade.getCartByid(idUser);
+        List itemList = cartFacade.getProductList(idUser);
 
         ModelAndView mv = new ModelAndView("cartPage");
                 mv.addObject("itemList", itemList);
@@ -45,15 +48,20 @@ public class CartController {
         return new ModelAndView("checkout");
     }
 
-    @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
-    public ModelAndView addToCart(HttpSession session, @RequestParam int idSku) {
-        logger.info("add to cart");
-        int idUser = (int) session.getAttribute("idUser");
+    @RequestMapping(value = "/addToCart", method = RequestMethod.GET)
+    public String addToCart(HttpSession session, @RequestParam int idSku) {
+        logger.info("Add to cart  - idSku: " + idSku);
+        UserData UserDataTEMP = (UserData)session.getAttribute("loggedUser");
+        logger.info(UserDataTEMP);
+        int idUser = UserDataTEMP.getIdUser();
+       logger.info("idUser: " + idUser);
         CartData currentCart = cartFacade.getCartByid(idUser);
+       logger.info("currentCart: " + currentCart);
         int idCart = currentCart.getIdCart();
-        cartFacade.addToCart(idSku, idCart);
+      logger.info("idCart: " + idCart + " idSku: " + idSku);
+       cartFacade.addToCart(idSku, idCart);
 
-        return new ModelAndView("index");
+        return "redirect:/index/";
     }
 
 

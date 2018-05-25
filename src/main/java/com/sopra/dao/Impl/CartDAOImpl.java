@@ -4,11 +4,13 @@ import com.sopra.dao.CartDAO;
 import com.sopra.model.Cart;
 import com.sopra.model.SkuCart;
 import org.apache.log4j.Logger;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Iterator;
 import java.util.List;
 
 @Repository
@@ -69,5 +71,18 @@ public class CartDAOImpl implements CartDAO {
         return sessionFactory.getCurrentSession()
                 .createQuery("FROM Product P, Sku S, SkuCart SC WHERE SC.idCart = :idCart AND SC.idSku = S.idSku AND S.baseProduct = P.idProduct")
                 .setParameter("idCart", idCartFind).list();
+    }
+
+    @Override
+    public int getCartQty(int idCart) {
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("SELECT COUNT(*) FROM SkuCart AS SC WHERE SC.idCart = :idCart")
+                .setParameter("idCart", idCart);
+        long temp = 0;
+        for(Iterator it = query.iterate(); it.hasNext();) {
+             temp = (Long) it.next();
+        }
+        logger.info("Numero elementi: " + temp);
+        return (int)(long) temp;
     }
 }

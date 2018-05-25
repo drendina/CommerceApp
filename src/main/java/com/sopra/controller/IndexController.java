@@ -6,7 +6,6 @@ import com.sopra.facade.CartFacade;
 import com.sopra.facade.IndexFacade;
 import com.sopra.facade.UserFacade;
 import com.sopra.form.CompleteUserForm;
-import com.sopra.model.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,6 +78,9 @@ public class IndexController {
 
         CartData tempCartData = cartFacade.getCartByid(loggedUser.getIdUser());
         request.getSession().setAttribute("cart", tempCartData);
+
+        int cartQty = cartFacade.getCartQty(tempCartData.getIdCart());
+        request.getSession().setAttribute("quantity", cartQty);
 
         return "redirect:/index";
     }

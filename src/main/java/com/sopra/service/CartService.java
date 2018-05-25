@@ -9,4 +9,5 @@ public interface CartService {
      void createCartBindWithUser (int idUser);
      Cart getCartById (int idUser);
      List getProductList(int idUser);
+     int getCartQty (int idCart);
 }
