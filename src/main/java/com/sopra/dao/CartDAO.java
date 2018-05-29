@@ -11,4 +11,5 @@ public interface CartDAO {
     Cart getCartById(int idUser);
     List getProductList(int idUser);
     int getCartQty(int idCart);
+    void deleteItems(List skuCartList);
 }

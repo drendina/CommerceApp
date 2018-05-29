@@ -30,4 +30,9 @@ public class UserServiceImpl implements UserService {
     public int insertUser(User user) {
         return userDAO.insertUser(user);
     }
+
+    @Override
+    public int getIdAddressByIdUser(int idUser) {
+        return userDAO.getIdAddressByIdUser(idUser);
+    }
 }

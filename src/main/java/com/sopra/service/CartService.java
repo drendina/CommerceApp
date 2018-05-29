@@ -10,4 +10,5 @@ public interface CartService {
      Cart getCartById (int idUser);
      List getProductList(int idUser);
      int getCartQty (int idCart);
+     void deleteItems(List skuCartList);
 }

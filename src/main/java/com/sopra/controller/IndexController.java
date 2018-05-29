@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -82,7 +83,17 @@ public class IndexController {
         int cartQty = cartFacade.getCartQty(tempCartData.getIdCart());
         request.getSession().setAttribute("quantity", cartQty);
 
+        int X = getQuantity(request);
         return "redirect:/index";
+    }
+
+    @RequestMapping(value = "/quantity")
+    public int getQuantity (HttpServletRequest request){
+//        UserData loggedUser = (UserData) request.getSession().getAttribute("loggedUser");
+//        CartData tempCartData = cartFacade.getCartByid(loggedUser.getIdUser());
+//        return cartFacade.getCartQty(tempCartData.getIdCart());
+        logger.info(request.getSession().getAttribute("quantity"));
+       return (int) request.getSession().getAttribute("quantity");
     }
 
     @RequestMapping(value = "/logout")

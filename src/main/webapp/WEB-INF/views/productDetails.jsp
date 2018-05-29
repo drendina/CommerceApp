@@ -42,17 +42,10 @@
                     
                     </c:when>
                     <c:otherwise>
-                        <button><a href="/cart/addToCart?idSku=1"/>small</button>
+                        <button id="productSelectBtn"><a href="/cart/addToCart?idSku=1"/>small</button>
                     </c:otherwise>
                 </c:choose>
-                
-                
-                
-                
             </div>
-            
-            
-            
         </div>
     </div>
     

@@ -46,4 +46,9 @@ public class CartFacadeImpl implements CartFacade {
     public List getProductList(int idUser) {
         return cartService.getProductList(idUser);
     }
+
+    @Override
+    public void deleteItems(List skuCartList) {
+        cartService.deleteItems(skuCartList);
+    }
 }

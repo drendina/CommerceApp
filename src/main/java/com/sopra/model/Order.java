@@ -20,10 +20,16 @@ public class Order implements Serializable {
     private int idUser;
 
     @Column
-    private int idCart;
-
-    @Column
     private int idAddress;
+
+    public Order() {
+    }
+
+    public Order(String birthdate, int idUser, int idAddress) {
+        this.birthdate = birthdate;
+        this.idUser = idUser;
+        this.idAddress = idAddress;
+    }
 
     public int getIdOrder() {
         return idOrder;
@@ -49,14 +55,6 @@ public class Order implements Serializable {
         this.idUser = idUser;
     }
 
-    public int getIdCart() {
-        return idCart;
-    }
-
-    public void setIdCart(int idCart) {
-        this.idCart = idCart;
-    }
-
     public int getIdAddress() {
         return idAddress;
     }
@@ -71,7 +69,6 @@ public class Order implements Serializable {
                 "idOrder=" + idOrder +
                 ", birthdate='" + birthdate + '\'' +
                 ", idUser=" + idUser +
-                ", idCart=" + idCart +
                 ", idAddress=" + idAddress +
                 '}';
     }

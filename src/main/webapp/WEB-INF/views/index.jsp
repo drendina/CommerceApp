@@ -26,7 +26,7 @@
                             </form:form>
                         </c:when>
                         <c:otherwise>
-                            Elementi nel carrello: ${quantity}
+                            Elementi nel carrello: ${quantity} <h3 id="qty"></h3>
                             <form:form method="GET" action="/cart/" >
                                 <input id="register" type="submit" value="GO TO CART">
                             </form:form>
@@ -43,7 +43,7 @@
                             Email:<form:input path="email" id="emailInput"/>
                             <br>
                             Password: <form:input path="password" id="pwdInput"/>
-                            <input id="submit "type="submit" value="LOGIN">
+                            <input id="submitLogin" type="submit" value="LOGIN">
                         </form:form>
                     </c:when>
                     <c:otherwise>

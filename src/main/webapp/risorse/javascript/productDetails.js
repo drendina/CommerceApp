@@ -1,6 +1,6 @@
 $(document).ready( function() {
-
-}
+ $('#productSelectBtn').on('click' , addToCart);
+});
 
 function refresh(){
     $.ajax(
@@ -22,5 +22,8 @@ function refresh(){
             }
         }
     )
+}
 
+function addToCart(){
+    alert('prodotto aggiunto al carrello');
 }

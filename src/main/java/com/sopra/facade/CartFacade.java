@@ -9,4 +9,5 @@ public interface CartFacade {
     int getCartQty (int idCart);
     CartData getCartByid (int idUser);
     List getProductList(int idUser);
+    void deleteItems(List skuCartList);
 }

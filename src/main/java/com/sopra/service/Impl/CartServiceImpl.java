@@ -46,4 +46,8 @@ public class CartServiceImpl implements CartService {
         return cartDAO.getCartQty(idCart);
     }
 
+    @Override
+    public void deleteItems(List skuCartList) {
+        cartDAO.deleteItems(skuCartList);
+    }
 }

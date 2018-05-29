@@ -103,6 +103,8 @@
             <a target="_blank" title="follow me on facebook" href="http://www.facebook.com/GUCCI/"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>
         </div>
     </div>
-    
+    <script src="/risorse/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/risorse/node_modules/mustache/mustache.js"></script>
+    <script type="text/javascript" src="/risorse/javascript/checkout.js"></script>
 </body>
 </html>

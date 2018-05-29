@@ -52,25 +52,26 @@ public class CartDAOImpl implements CartDAO {
                 .get(0);
 
 
-        logger.info("Find cart: " +temp);
+        logger.info("Find cart(getCartById): " +temp);
         return temp;
     }
+//    @Override
+//    public List getProductList(int idUser) {
+//        Cart temp = getCartById(idUser);
+//        logger.info("Find cart (getProductList): " +temp);
+//        int idCartFind = temp.getIdCart();
+//        return sessionFactory.getCurrentSession()
+//                .createQuery("FROM Product P, Sku S, SkuCart SC WHERE SC.idCart = :idCart AND SC.idSku = S.idSku AND S.baseProduct = P.idProduct")
+//                .setParameter("idCart", idCartFind).list();
+//    }
+
     @Override
-    public List getProductList(int idUser) {
-        //TODO REFACTOR, RICHAIMARE METODO SOPRA
-
-        Cart temp = (Cart) sessionFactory.getCurrentSession()
-                .createQuery("FROM Cart C WHERE C.idUser = :idUser")
-                .setParameter("idUser", idUser)
-                .list()
-                .get(0);
-
-        logger.info("Find cart: " +temp);
-
-        int idCartFind = temp.getIdCart();
+    public List getProductList (int idUser){
+        int idCart = getCartById(idUser).getIdCart();
         return sessionFactory.getCurrentSession()
-                .createQuery("FROM Product P, Sku S, SkuCart SC WHERE SC.idCart = :idCart AND SC.idSku = S.idSku AND S.baseProduct = P.idProduct")
-                .setParameter("idCart", idCartFind).list();
+                .createQuery("FROM SkuCart SC WHERE SC.idCart = :idCart")
+                .setParameter("idCart", idCart)
+                .list();
     }
 
     @Override
@@ -84,5 +85,15 @@ public class CartDAOImpl implements CartDAO {
         }
         logger.info("Numero elementi: " + temp);
         return (int)(long) temp;
+    }
+
+    @Override
+    public void deleteItems(List skuCartList) {
+        int length = skuCartList.size();
+        for(int i = 0; i< length; i++)
+        {
+            SkuCart temp = (SkuCart) skuCartList.get(i);
+            sessionFactory.getCurrentSession().delete(temp);
+        }
     }
 }

@@ -29,7 +29,6 @@ public class CartController {
     public ModelAndView deployCartpage(HttpSession session, @ModelAttribute("user") UserData userData) {
         logger.info("Deploying Cartpage");
         logger.info(session.getAttribute("loggedUser"));
-//        TODO RECUPERARE CARRELLO PER CURRENT USER
 
         int idUser = ((UserData) session.getAttribute("loggedUser")).getIdUser();
         CartData currentCart = cartFacade.getCartByid(idUser);
@@ -37,15 +36,18 @@ public class CartController {
 
         ModelAndView mv = new ModelAndView("cartPage");
                 mv.addObject("itemList", itemList);
-                mv.addObject("cUrrentCart", currentCart);
+                mv.addObject("currentCart", currentCart);
 
         return mv;
     }
 
     @RequestMapping(value = "/checkout")
-    public ModelAndView checkout() {
+    public ModelAndView checkout(HttpSession session) {
+        int idUser = ((UserData) session.getAttribute("loggedUser")).getIdUser();
         logger.info("go to checkout page");
-        return new ModelAndView("checkout");
+        List itemList = cartFacade.getProductList(idUser);
+        ModelAndView mv = new ModelAndView("checkout");
+        return new ModelAndView("checkout", "itemList" , itemList);
     }
 
     @RequestMapping(value = "/addToCart", method = RequestMethod.GET)
@@ -62,6 +64,11 @@ public class CartController {
        cartFacade.addToCart(idSku, idCart);
 
         return "redirect:/index/";
+    }
+
+    @RequestMapping(value = "/removeCart")
+    public void removeItemsFromCart(){
+
     }
 
 

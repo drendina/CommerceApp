@@ -41,4 +41,9 @@ public class UserFacadeImpl implements UserFacade {
         int idUser = userService.insertUser(tempUser);
         cartService.createCartBindWithUser(idUser);
     }
+
+    @Override
+    public int getIdAddressByIdUser(int idUser) {
+        return userService.getIdAddressByIdUser(idUser);
+    }
 }

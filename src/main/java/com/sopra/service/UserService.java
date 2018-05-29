@@ -7,4 +7,5 @@ public interface UserService {
     User login(String email, String password);
     int insertAddress(AddressBook addressBook);
     int insertUser(User user);
+    int getIdAddressByIdUser(int idUser);
 }

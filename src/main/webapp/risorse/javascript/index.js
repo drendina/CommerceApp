@@ -1,5 +1,8 @@
 $(document).ready( function(){
    refresh();
+   $('#submitLogin').on('click', refreshItemNumber);
+
+//TODO aggiornare numero degli item nel carrello
 });
 
 function refresh(){
@@ -23,4 +26,20 @@ function refresh(){
         }
     )
 
+}
+// TODO sistemare questa funzione che da sempre chiamata fallita
+
+function refreshItemNumber(){
+    $.ajax(
+        {
+            type: 'get',
+            url: '/index/quantity',
+            dataType: 'int',
+            success: function (risposta) {
+                alert(risposta);
+                // $('#qty').append(risposta);
+                 },
+            error: function () { alert("Chiamata fallita") }
+        }
+    )
 }

@@ -39,6 +39,16 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public int insertUser(User user) {
         logger.info(user);
-        return (int )sessionFactory.getCurrentSession().save(user);
+        return (int)sessionFactory.getCurrentSession().save(user);
+    }
+
+    @Override
+    public int getIdAddressByIdUser(int idUser) {
+        User temp = (User) sessionFactory.getCurrentSession()
+                .createQuery("FROM User WHERE idUser = :idUser")
+                .setParameter("idUser", idUser)
+                .list()
+                .get(0);
+        return temp.getIdAddress();
     }
 }

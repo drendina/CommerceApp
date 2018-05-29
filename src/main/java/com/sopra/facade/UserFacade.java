@@ -10,6 +10,8 @@ public interface UserFacade {
 
     void manageInsert(CompleteUserForm cuf);
 
+    int getIdAddressByIdUser (int idUser);
+
 //    int insertAddress(AddressBook addressBook);
 //
 //    void insertUser(User user);

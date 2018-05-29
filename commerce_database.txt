@@ -1,0 +1,37 @@
+DROP DATABASE IF EXISTS commerce_database;
+
+CREATE DATABASE commerce_database;
+
+USE commerce_database;
+
+CREATE TABLE address_book(idAddressBook int NOT NULL AUTO_INCREMENT, address varchar(50) NOT NULL, number int NOT NULL, cap int NOT NULL, city varchar(20) NOT NULL, nation varchar(20) NOT NULL, PRIMARY KEY (idAddressBook) ) ENGINE=InnoDB;
+
+CREATE TABLE user(idUser int NOT NULL AUTO_INCREMENT, title varchar(20), name varchar(20) DEFAULT 'Guest', surname varchar(20) DEFAULT '', idAddress int NOT NULL, email varchar(50) NOT NULL, password varchar(50) NOT NULL, role varchar(20) NOT NULL, newsletter varchar(10) DEFAULT 'YES', PRIMARY KEY (idUser), FOREIGN KEY (idAddress) REFERENCES address_book (idAddressBook)) ENGINE=InnoDB;
+
+CREATE TABLE cart(idCart int NOT NULL AUTO_INCREMENT, amount int NOT NULL DEFAULT 0, idUser int NOT NULL, PRIMARY KEY (idCart), FOREIGN KEY (idUser) REFERENCES user (idUser))ENGINE=InnoDB;
+
+CREATE TABLE orders(idOrder int NOT NULL AUTO_INCREMENT, birthdate varchar(20) NOT NULL, idUser int NOT NULL, idCart int NOT NULL, idAddress int NOT NULL, PRIMARY KEY (idOrder), FOREIGN KEY (idUser) REFERENCES user (idUser), FOREIGN KEY (idCart) REFERENCES cart (idCart), FOREIGN KEY (idAddress) REFERENCES address_book (idAddressBook))ENGINE=InnoDB;
+
+CREATE TABLE product(idProduct int NOT NULL AUTO_INCREMENT, description varchar(1000) NOT NULL, name varchar(100) NOT NULL, image varchar(100) NOT NULL, colore varchar(20) NOT NULL, tessuto varchar(20) NOT NULL, PRIMARY KEY (idProduct))ENGINE=InnoDB;
+
+CREATE TABLE sku(idSku int NOT NULL AUTO_INCREMENT, size varchar(20) NOT NULL, price int NOT NULL, baseProduct int NOT NULL, PRIMARY KEY (idSku), FOREIGN KEY (baseProduct) REFERENCES product (idProduct)) ENGINE=InnoDB;
+
+CREATE TABLE stock(idStock int NOT NULL AUTO_INCREMENT, remainingItems int NOT NULL, idSku int NOT NULL UNIQUE, PRIMARY KEY (idStock), FOREIGN KEY (idSku) REFERENCES sku (idSku))ENGINE=InnoDB;
+
+CREATE TABLE sku_order(idSku_order int NOT NULL AUTO_INCREMENT, idSku int NOT NULL, idOrder int NOT NULL, PRIMARY KEY (idSku_order), FOREIGN KEY (idSku) REFERENCES sku (idSku),FOREIGN KEY (idOrder) REFERENCES orders (idOrder)) ENGINE=InnoDB;
+
+CREATE TABLE sku_cart(idSku_cart int NOT NULL AUTO_INCREMENT, idSku int NOT NULL, idCart int NOT NULL, PRIMARY KEY (idSku_cart), FOREIGN KEY (idSku) REFERENCES sku (idSku),FOREIGN KEY (idCart) REFERENCES cart (idCart) )ENGINE=InnoDB;
+
+
+
+
+
+INSERT INTO address_book (address, number, cap, city, nation) VALUES ('Strada' , 4, 20090, 'Assago', 'Italy');
+
+INSERT INTO user (name, surname, idAddress, email, password, role, newsletter) VALUES ('Daniele', 'Rendina', 1 , 'dani@gmail.com', 'dani', 'ADMIN', 'NO');
+
+INSERT INTO product(description, name, image, colore, tessuto) VALUES ('La stampa Guccy rivisitata nel font di SEGA, il celebre brand di videogiochi, e si combina a un motivo con stelle color oro.', 'T-shirt in cotone con stampa Guccy', 'T-shirt-stampa-Guccy.jpg', 'nero', 'cotone');
+
+INSERT INTO sku (size, price, baseProduct) VALUES ('small', 450, 1 ), ('medium', 460, 1 ), ('large', 470, 1);
+
+INSERT INTO product (description, name, image, colore, tessuto) VALUES ('T-shirt classica in jersey di cotone lavato con piccoli fori sul tessuto per un effetto vintage. Alessandro Michele aggiorna il logo Gucci in maniera inaspettata, traendo ispirazione dalle stampe vintage degli anni Ottanta.', 'T shirt con stampa logo vintage', 'T-shirt-stampa-logo-vintage.jpg', 'bianca', 'cotone');
