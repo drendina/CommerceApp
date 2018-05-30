@@ -3,38 +3,52 @@ package com.sopra.form;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class CompleteUserForm {
-
+    @NotNull
+    @Size(min = 1)
     private String title;
 
+    @NotNull
+    @Size(min = 3)
     private String name;
 
+    @NotNull
+    @Size(min = 3)
     private String surname;
 
     @NotNull
+    @Size(min = 10)
     private String address;
 
     @NotNull
+    @Min(99999999)
+    @Max(999999999)
     private int number;
 
     @NotNull
-    @Min(5)
-    @Max(5)
+    @Min(10000)
+    @Max(30000)
     private int cap;
 
     @NotNull
+    @Size(min = 3)
     private String city;
 
     @NotNull
+    @Size(min = 3)
     private String nation;
 
     @NotNull
+    @Size(min = 3)
     private String email;
 
     @NotNull
+    @Size(min = 3)
     private String password;
-
+    @NotNull
+    @Size(min = 1)
     private String newsletter;
 
     public String getTitle() {

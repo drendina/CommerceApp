@@ -18,6 +18,7 @@
 
     <context:property-placeholder location="classpath:application.properties" />
 
+    <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven/>
 
     <mvc:resources mapping="/risorse/**" location="/risorse/" cache-period="0"/>

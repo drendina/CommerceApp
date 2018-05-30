@@ -6,6 +6,7 @@ import com.sopra.model.SkuCart;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.annotations.NamedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -66,7 +67,7 @@ public class CartDAOImpl implements CartDAO {
 //    }
 
     @Override
-    public List getProductList (int idUser){
+    public List<SkuCart> getProductList (int idUser){
         int idCart = getCartById(idUser).getIdCart();
         return sessionFactory.getCurrentSession()
                 .createQuery("FROM SkuCart SC WHERE SC.idCart = :idCart")

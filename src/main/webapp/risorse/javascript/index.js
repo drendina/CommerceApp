@@ -1,7 +1,6 @@
 $(document).ready( function(){
    refresh();
-   $('#submitLogin').on('click', refreshItemNumber);
-
+  $('#submitLogin').on('click', refreshItemNumber);
 //TODO aggiornare numero degli item nel carrello
 });
 
@@ -27,17 +26,16 @@ function refresh(){
     )
 
 }
-// TODO sistemare questa funzione che da sempre chiamata fallita
+// TODO sistemare questa funzione che va sempre in error
 
 function refreshItemNumber(){
     $.ajax(
         {
             type: 'get',
-            url: '/index/quantity',
-            dataType: 'int',
-            success: function (risposta) {
-                alert(risposta);
-                // $('#qty').append(risposta);
+            url: '/index/ajax/quantity',
+            success: function (resp) {
+                alert(resp);
+                 //$('#qty').append(risposta);
                  },
             error: function () { alert("Chiamata fallita") }
         }

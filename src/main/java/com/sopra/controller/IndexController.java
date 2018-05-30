@@ -64,11 +64,6 @@ public class IndexController {
         return "redirect:/index/";
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/registration")
-    public ModelAndView redirectToFormPage(@ModelAttribute("completeUserForm") CompleteUserForm completeUserForm){
-        logger.info("Deploying form page");
-        return new ModelAndView("formPage");
-    }
 
     @RequestMapping(value = "/login")
     public String login (@RequestParam String email, @RequestParam String password, HttpServletRequest request){
@@ -83,7 +78,6 @@ public class IndexController {
         int cartQty = cartFacade.getCartQty(tempCartData.getIdCart());
         request.getSession().setAttribute("quantity", cartQty);
 
-        int X = getQuantity(request);
         return "redirect:/index";
     }
 
@@ -94,6 +88,17 @@ public class IndexController {
 //        return cartFacade.getCartQty(tempCartData.getIdCart());
         logger.info(request.getSession().getAttribute("quantity"));
        return (int) request.getSession().getAttribute("quantity");
+    }
+
+    @RequestMapping(value = "/ajax/quantity")
+    public String getQuantityAjax (HttpServletRequest request){
+//        UserData loggedUser = (UserData) request.getSession().getAttribute("loggedUser");
+//        CartData tempCartData = cartFacade.getCartByid(loggedUser.getIdUser());
+//        return cartFacade.getCartQty(tempCartData.getIdCart());
+        logger.info(request.getSession().getAttribute("quantity").toString() + " value of cart");
+
+        //return request.getSession().getAttribute("quantity").toString();
+        return "Ciao mamma";
     }
 
     @RequestMapping(value = "/logout")

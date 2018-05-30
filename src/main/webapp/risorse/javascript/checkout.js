@@ -8,11 +8,4 @@ function payFunction(){
         url: "/order/createOrder"
     });
     window.location = '/index';
-
-    /*
-
-    1 - salva tutti i dati del carrello nell'ordine
-    2 - riduci stock
-    3 - cancella il carrello
-    */
 }

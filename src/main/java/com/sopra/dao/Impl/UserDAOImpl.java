@@ -19,7 +19,8 @@ public class UserDAOImpl implements UserDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public User login(String email, String password) {
+    public User login(String email, String password)  {
+        try{
         logger.info("Login");
 
         User user = (User) (sessionFactory.getCurrentSession()
@@ -29,6 +30,11 @@ public class UserDAOImpl implements UserDAO {
                 .list()).get(0);
         logger.info(user);
         return user;
+        }
+        catch (Exception e ){
+            logger.info("login failed");
+            return null;
+        }
     }
 
     @Override

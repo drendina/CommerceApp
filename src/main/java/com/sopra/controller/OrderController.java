@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @Transactional
@@ -52,7 +53,19 @@ public class OrderController {
         int idOrder = orderFacade.insertOrder(nowDate, idUser, idAddress);
         
 //      AGGIUNGO ALL'ORDINE I PRODOTTI ACQUISTATI
-        List prodList = cartDAO.getProductList(idUser); //Lista SkuCart
+        List<SkuCart> prodList = cartDAO.getProductList(idUser); //Lista SkuCart
+
+//  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//      LAMBDA EXPRESSION - MATTEO
+
+//       List<SkuOrder> prodListOrder = new ArrayList();
+//     prodList.stream().forEach(e -> prodListOrder.add(new SkuOrder(e.getIdSku() , idOrder)));
+//
+//        List<SkuOrder> aaa = prodList.stream()
+//                .map(e -> new SkuOrder(e.getIdSku() , idOrder))
+//                .peek(e -> logger.info(e.getIdSku()))
+//                .collect(Collectors.toList());
+//  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         int size = prodList.size();
         List prodListOrder = new ArrayList();
         for(int i = 0; i < size; i++){
@@ -69,7 +82,7 @@ public class OrderController {
 
         int[] stockUpdate = new int[size];
 
-//      TODO: 3 - AGGIORNARE STOCK
+//       AGGIORNARE STOCK
         //creo array contenente i valori degli id da cancellare
         for(int i = 0; i < size; i++){
             SkuCart temp = (SkuCart) prodList.get(i);
