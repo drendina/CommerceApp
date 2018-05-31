@@ -6,17 +6,26 @@ import com.sopra.facade.CartFacade;
 import com.sopra.facade.IndexFacade;
 import com.sopra.facade.UserFacade;
 import com.sopra.form.CompleteUserForm;
+import com.sopra.form.LoginForm;
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @Controller
@@ -36,7 +45,7 @@ public class IndexController {
 
 
     @RequestMapping(value = {"/", ""})
-    public ModelAndView deployHomepage(@ModelAttribute("user") UserData userData){
+    public ModelAndView deployHomepage(@ModelAttribute("login") LoginForm loginForm){
         logger.info("Deploying Homepage");
         return new ModelAndView("index");
     }
@@ -66,32 +75,38 @@ public class IndexController {
 
 
     @RequestMapping(value = "/login")
-    public String login (@RequestParam String email, @RequestParam String password, HttpServletRequest request){
-        logger.info("Login user. Info: " + email + " "+ password);
+    public String login (HttpServletRequest request, HttpServletResponse response, Model model, @Valid @ModelAttribute LoginForm loginForm, BindingResult bindingResult) throws NoSuchAlgorithmException, ServletException, IOException {
+        logger.info("Login user. Info: " + loginForm.getEmail() + " "+ loginForm.getPassword());
+        UserData loggedUser = userFacade.login(loginForm.getEmail(),loginForm.getPassword(),bindingResult);
 
-        UserData loggedUser = userFacade.login(email,password);
-        request.getSession().setAttribute("loggedUser", loggedUser);
+        if (bindingResult.hasErrors()){
+           //TODO GESTIRE L'ERRORE INSERITO NEL BINDING RESULT
+        }
+        else{
+            request.getSession().setAttribute("loggedUser", loggedUser);
 
-        CartData tempCartData = cartFacade.getCartByid(loggedUser.getIdUser());
-        request.getSession().setAttribute("cart", tempCartData);
+            CartData tempCartData = cartFacade.getCartByid(loggedUser.getIdUser());
+            request.getSession().setAttribute("cart", tempCartData);
 
-        int cartQty = cartFacade.getCartQty(tempCartData.getIdCart());
-        request.getSession().setAttribute("quantity", cartQty);
+            int cartQty = cartFacade.getCartQty(tempCartData.getIdCart());
+            request.getSession().setAttribute("quantity", cartQty);
+        }
 
         return "redirect:/index";
     }
 
     @RequestMapping(value = "/quantity")
-    public int getQuantity (HttpServletRequest request){
+    public String getQuantity (HttpServletRequest request){
 //        UserData loggedUser = (UserData) request.getSession().getAttribute("loggedUser");
 //        CartData tempCartData = cartFacade.getCartByid(loggedUser.getIdUser());
 //        return cartFacade.getCartQty(tempCartData.getIdCart());
         logger.info(request.getSession().getAttribute("quantity"));
-       return (int) request.getSession().getAttribute("quantity");
+       //return (int) request.getSession().getAttribute("quantity");
+            return "Ciao papà";
     }
 
     @RequestMapping(value = "/ajax/quantity")
-    public String getQuantityAjax (HttpServletRequest request){
+    public @ResponseBody String getQuantityAjax (HttpServletRequest request){
 //        UserData loggedUser = (UserData) request.getSession().getAttribute("loggedUser");
 //        CartData tempCartData = cartFacade.getCartByid(loggedUser.getIdUser());
 //        return cartFacade.getCartQty(tempCartData.getIdCart());

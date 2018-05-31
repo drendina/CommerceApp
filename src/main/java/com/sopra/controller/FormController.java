@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
+import javax.validation.Validator;
+import java.security.NoSuchAlgorithmException;
+import java.util.Set;
 
 @Controller
 @Transactional
@@ -36,9 +40,10 @@ public class FormController {
     @RequestMapping(method = RequestMethod.POST, value = "/submit")
     public ModelAndView submitForm(@ModelAttribute("userData") UserData userData,
                                    @Valid @ModelAttribute("completeUserForm")CompleteUserForm completeUserForm,
-                                   BindingResult bindingResult) {
+                                   BindingResult bindingResult) throws NoSuchAlgorithmException {
+        boolean x = completeUserForm.getPassword().equals(completeUserForm.getPasswordRepeat());
 
-        if(bindingResult.hasErrors()){
+        if(bindingResult.hasErrors() || !x){
             logger.info("Error");
             return new ModelAndView("formPage","completeUserForm",completeUserForm);
         }
@@ -49,6 +54,8 @@ public class FormController {
             return new ModelAndView("index", "user", userData);
         }
     }
+
+
 
 
 }

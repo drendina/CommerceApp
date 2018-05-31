@@ -7,41 +7,45 @@
                     <form:radiobutton path="title" value="Mrs" /> Mrs.
                     <form:errors path="title"></form:errors>
                     <br>
-                    <form:label path="name">NAME</form:label>
+                    <form:label path="name">Name</form:label>
                     <form:input path="name"/>
                     <form:errors path="name"></form:errors>
                     <br>
-                    <form:label path="surname">SURNAME</form:label>
+                    <form:label path="surname">Surname</form:label>
                     <form:input path="surname"/>
                     <form:errors path="surname"></form:errors>
                     <br>
-                    <form:label path="address">ADDRESS</form:label>
+                    <form:label path="address">Address</form:label>
                     <form:input path="address"/>
                     <form:errors path="address"></form:errors>
                     <br>
-                    <form:label path="number">NUMBER</form:label>
+                    <form:label path="number">Phone number</form:label>
                     <form:input path="number"/>
                     <form:errors path="number"></form:errors>
                     <br>
-                    <form:label path="cap">cap</form:label>
+                    <form:label path="cap">Zipcode</form:label>
                     <form:input path="cap"/>
                     <form:errors path="cap"></form:errors>
                     <br>
-                    <form:label path="city">city</form:label>
+                    <form:label path="city">City</form:label>
                     <form:input path="city"/>
                     <form:errors path="city"></form:errors>
                     <br>
-                    <form:label path="nation">nation</form:label>
+                    <form:label path="nation">Nation</form:label>
                     <form:input path="nation"/>
                     <form:errors path="nation"></form:errors>
                     <br>
-                    <form:label path="email">email</form:label>
+                    <form:label path="email">Email</form:label>
                     <form:input path="email"/>
                     <form:errors path="email"></form:errors>
                     <br>
-                    <form:label path="password">password</form:label>
-                    <form:input path="password"/>
+                    Password: <form:password path="password" />
+                    <%--<form:input path="password"/>--%>
                     <form:errors path="password"></form:errors>
+                    <br>
+                    Repeat password: <form:password  path="passwordRepeat"/>
+                    <%--<form:input path="passwordRepeat"/>--%>
+                    <form:errors path="passwordRepeat"></form:errors>
                     <br>
                     <form:radiobutton path="newsletter" value="YES" /> Yes
                     <form:radiobutton path="newsletter" value="NO" /> No

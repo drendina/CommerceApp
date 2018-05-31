@@ -19,10 +19,10 @@ public class AddressBook implements Serializable {
     private String address;
 
     @Column
-    private int number;
+    private String number;
 
     @Column
-    private int cap;
+    private String cap;
 
     @Column
     private String city;
@@ -31,7 +31,7 @@ public class AddressBook implements Serializable {
     private String nation;
     public AddressBook(){}
 
-    public AddressBook(String address, int number, int cap, String city, String nation ){
+    public AddressBook(String address, String number, String cap, String city, String nation ){
         this.address=address;
         this.number=number;
         this.cap=cap;
@@ -55,19 +55,19 @@ public class AddressBook implements Serializable {
         this.address = address;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public int getCap() {
+    public String getCap() {
         return cap;
     }
 
-    public void setCap(int cap) {
+    public void setCap(String cap) {
         this.cap = cap;
     }
 

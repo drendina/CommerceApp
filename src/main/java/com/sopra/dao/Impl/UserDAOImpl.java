@@ -7,6 +7,8 @@ import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 
 import javax.transaction.Transactional;
 
@@ -19,9 +21,9 @@ public class UserDAOImpl implements UserDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public User login(String email, String password)  {
+    public User login(String email, String password, BindingResult bindingResult)  {
         try{
-        logger.info("Login");
+        logger.info("Login: " + email + " - " + password );
 
         User user = (User) (sessionFactory.getCurrentSession()
                 .createQuery("FROM User U WHERE U.email = :email AND U.password = :password")
@@ -33,7 +35,9 @@ public class UserDAOImpl implements UserDAO {
         }
         catch (Exception e ){
             logger.info("login failed");
-            return null;
+            ObjectError error = new ObjectError("Login error", "Login error");
+            bindingResult.addError(error);
+            return new User();
         }
     }
 

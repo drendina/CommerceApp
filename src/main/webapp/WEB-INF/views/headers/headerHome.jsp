@@ -39,10 +39,11 @@
     <div id="login" class="floating">
         <c:choose>
             <c:when test="${empty loggedUser.name}">
-                <form:form id="registerForm" method="GET" action="/index/login" modelAttribute="user" >
+                <form:form id="registerForm" method="GET" action="/index/login" modelAttribute="login" >
                     Email:<form:input path="email" id="emailInput"/>
                     <br>
-                    Password: <form:input path="password" id="pwdInput"/>
+                    Password: <form:password path="password" id="pwdInput"/>
+                   
                     <input id="submitLogin" type="submit" value="LOGIN">
                 </form:form>
             </c:when>

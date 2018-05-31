@@ -1,54 +1,49 @@
 package com.sopra.form;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.Pattern;
 
 public class CompleteUserForm {
-    @NotNull
-    @Size(min = 1)
+
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private static final String CAP_PATTERN = "^[0-9]{5}$";
+    private static final String PHONE_NUMBER_PATTERN = "^\\d{10}$";
+
+    @NotBlank
     private String title;
 
-    @NotNull
-    @Size(min = 3)
+    @NotBlank
     private String name;
 
-    @NotNull
-    @Size(min = 3)
+    @NotBlank
     private String surname;
 
-    @NotNull
-    @Size(min = 10)
+    @NotBlank
     private String address;
 
-    @NotNull
-    @Min(99999999)
-    @Max(999999999)
-    private int number;
+    @Pattern(regexp = PHONE_NUMBER_PATTERN)
+    private String number;
 
-    @NotNull
-    @Min(10000)
-    @Max(30000)
-    private int cap;
+    @Pattern(regexp = CAP_PATTERN )
+    private String cap;
 
-    @NotNull
-    @Size(min = 3)
+    @NotBlank
     private String city;
 
-    @NotNull
-    @Size(min = 3)
+    @NotBlank
     private String nation;
 
-    @NotNull
-    @Size(min = 3)
+    @Pattern (regexp = EMAIL_PATTERN, message = "must match name@domain.country")
     private String email;
 
-    @NotNull
-    @Size(min = 3)
+    @NotBlank
     private String password;
-    @NotNull
-    @Size(min = 1)
+
+    @NotBlank
+    private String passwordRepeat;
+
+    @NotBlank
     private String newsletter;
 
     public String getTitle() {
@@ -83,19 +78,19 @@ public class CompleteUserForm {
         this.address = address;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public int getCap() {
+    public String getCap() {
         return cap;
     }
 
-    public void setCap(int cap) {
+    public void setCap(String cap) {
         this.cap = cap;
     }
 
@@ -129,6 +124,14 @@ public class CompleteUserForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordRepeat() {
+        return passwordRepeat;
+    }
+
+    public void setPasswordRepeat(String passwordRepeat) {
+        this.passwordRepeat = passwordRepeat;
     }
 
     public String getNewsletter() {

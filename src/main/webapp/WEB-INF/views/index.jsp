@@ -1,5 +1,6 @@
 <%@ include file="headers/headerHome.jsp"%>
         <div id="nav">
+            
             <div id="mustache">
                 <script id="template" type="x-tmpl-mustache">
                     <div>
@@ -15,5 +16,6 @@
              <%--template mustache che inserisce i div dei signoli prodotti--%>
             </div>
         </div>
-
 <%@ include file="footers/footer.jsp"%>
+
+

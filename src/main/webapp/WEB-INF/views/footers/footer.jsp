@@ -2,7 +2,7 @@
     <div id="manage" class="floating thitrythree">
         <c:choose>
             <c:when test="${loggedUser.role == 'ADMIN'}">
-                <h6>INSERIRE COLLEGAMENTO A MANAGEMENT PAGE</h6>
+                <h6>TODO : INSERIRE COLLEGAMENTO A MANAGEMENT PAGE</h6>
             </c:when>
             <c:otherwise>
                 <span>Copyright 2018 Gucci. Inc</span>

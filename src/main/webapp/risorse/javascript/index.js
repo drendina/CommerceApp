@@ -31,13 +31,12 @@ function refresh(){
 function refreshItemNumber(){
     $.ajax(
         {
-            type: 'get',
-            url: '/index/ajax/quantity',
-            success: function (resp) {
-                alert(resp);
-                 //$('#qty').append(risposta);
-                 },
-            error: function () { alert("Chiamata fallita") }
+            type: "get",
+            url: "/index/quantity",
+            dataType: "text",
+            success: function (resp) { alert(resp) }, //$('#qty').append(risposta);
+            error: function() { alert("")}
         }
     )
 }
+
