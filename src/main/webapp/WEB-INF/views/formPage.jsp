@@ -24,6 +24,7 @@
         --%>
             <h2>REGISTRATION</h2>
             <form:form method="POST" action="/form/submit" modelAttribute="completeUserForm">
+                <h4>Personal data</h4>
 
                 <div class="form-row">
                     <div class="form-group col-md-2">
@@ -42,22 +43,6 @@
                     <div class="form-group col-md-5">
                         <label for="surname">Surname</label>
                         <form:input type="text" class="form-control" path="surname" placeholder="Doe"/>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="email">Email</label>
-                        <form:input type="email" class="form-control" path="email" placeholder="Email"/>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="password">Password</label>
-                        <form:input type="password" class="form-control" path="password" placeholder="Password"/>
-                    </div>
-
-                    <div class="form-group col-md-4">
-                        <label for="passwordRepeat">Password</label>
-                        <form:input type="password" class="form-control" path="passwordRepeat" placeholder="Repeat Password"/>
                     </div>
                 </div>
 
@@ -88,6 +73,27 @@
                 </div>
 
                 <hr>
+
+                <h4>Sign in data</h4>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="email">Email</label>
+                        <form:input type="email" class="form-control" path="email" placeholder="Email"/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="password">Password</label>
+                        <form:input type="password" class="form-control" path="password" placeholder="Password"/>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="passwordRepeat">Password</label>
+                        <form:input type="password" class="form-control" path="passwordRepeat" placeholder="Repeat Password"/>
+                    </div>
+                </div>
+
+                <hr>
+                <h4>Policy</h4>
 
                 <div class="form-row">
                     <div class="form-group col-md-2">
