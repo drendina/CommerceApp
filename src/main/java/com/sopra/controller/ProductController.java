@@ -4,12 +4,14 @@ import com.sopra.facade.ProductDataFacade;
 import com.sopra.facade.SkuFacade;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -39,7 +41,9 @@ public class ProductController {
     @RequestMapping(value = "/getSizes")
     public @ResponseBody List getAllSizes(int idProduct){
         logger.info("Getting sizes");
-        return skuFacade.getSkuDataList(idProduct);
+         List skuList = skuFacade.getSkuDataList(idProduct);
+         logger.info("Lista sku 4 js " + skuList);
+         return skuList;
     }
 }
 

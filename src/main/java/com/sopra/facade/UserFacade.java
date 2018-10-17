@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import java.security.NoSuchAlgorithmException;
 
 public interface UserFacade {
-    UserData login(String email, String password, BindingResult bindingResult) throws NoSuchAlgorithmException;
+    UserData login(String email, String password) throws NoSuchAlgorithmException;
 
     void manageInsert(CompleteUserForm cuf) throws NoSuchAlgorithmException;
 

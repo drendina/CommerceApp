@@ -44,6 +44,8 @@ public class OrderController {
 
     @RequestMapping(value = "/createOrder")
     public void createOrder(HttpSession session){
+
+
 //      AGGIUNGO NUOVO ORDINE NEL DB
         int idUser = ((UserData) session.getAttribute("loggedUser")).getIdUser();
         Date today = new Date();

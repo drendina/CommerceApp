@@ -19,8 +19,12 @@ public class IndexDAOImpl implements IndexDAO {
     @Override
     public List getAllProduct() {
         logger.info("getAllProduct");
-        return sessionFactory.getCurrentSession()
+        List listTemp = sessionFactory.getCurrentSession()
                 .createQuery("FROM Product")
                 .list();
+
+        logger.info("After query list is: "+ listTemp);
+
+        return listTemp;
     }
 }

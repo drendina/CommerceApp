@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface SkuDAO {
     Sku retrieveSkuById(int idProduct);
-    List<Sku> getListSkuById(int idProduct);
+    List getListSkuById(int idProduct);
 }

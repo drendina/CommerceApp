@@ -6,49 +6,66 @@ h2{
     font-weight: 100;
 }
 #header{
-    background-color: burlywood;
-    position: fixed;
-    padding: 0px 50px;
-    width:100%;
+    background-color: #c6d4fd;
+
 }
 #nav{
-    background-color: lavender;
+    background-color: #E7E7E7;
     padding: 50px;
     padding-top: 123px;
 }
 #footer{
 
-    background-color: #9bcaff;
+    background-color: #c6d4fd;
     position: fixed;
     width: 100%;
 }
- .floating{
-     float: left;
- }
- #logo{
-     width: 50%;
- }
- #cart{
-     width: 20%;
- }
- #login{
-     width: 30%;
- }
- #imgLogo{
-     width: 50%;
- }
- #imgLogo img{
-     max-width: 100%;
+.floating{
+    float: left;
+}
+#logo{
+    width: 50%;
+}
+#cart{
+    width: 20%;
+}
+#login{
+    width: 30%;
+}
+#imgLogo{
+    width: 50%;
+}
+#imgLogo img{
+    max-width: 100%;
+    position: absolute;
+    margin: auto;
+    width: auto;
+    height: 32px;
+}
+.social-dropdown{
+    min-width: auto;
+}
+.product{
+    width: 50%;
+}
+.btn-primary{
+    border: none;
+}
 
- }
- .product{
-     width: 50%;
- }
- .prodImage:hover{
-     height: 450px;
-     width: 450px;
- }
+.btn{
+    background-color: #c6d4fd;
+}
+.btn.focus, .btn:focus{
+    box-shadow: none;
+}
 
- .thitrythree{
-     width: 33%;
- }
+.greetings{
+    font-style: italic;
+    text-align: center;
+}
+.background{
+    background-color: #c6d4fd;
+}
+#body{
+    background-color: #E7E7E7;
+}

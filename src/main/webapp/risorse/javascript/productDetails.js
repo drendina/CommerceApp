@@ -1,4 +1,5 @@
 $(document).ready( function() {
+    refresh();
  $('#productSelectBtn').on('click' , addToCart);
 });
 
@@ -9,6 +10,7 @@ function refresh(){
             url: "/product/getSizes",
             dataType: "json",
             success: function (risposta) {
+                alert("it works");
                 var template = $('#template').html();
                 Mustache.parse(template);
                 $('#showSizeForm').empty();
@@ -18,7 +20,7 @@ function refresh(){
                 });
             },
             error: function () {
-                alert("Chiamata fallita!");
+                alert("productDetails.js -> Chiamata fallita!");
             }
         }
     )

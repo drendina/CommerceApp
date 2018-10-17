@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
-    public User login(String email, String password, BindingResult bindingResult) throws NoSuchAlgorithmException {
-        return userDAO.login(email, cripter(password), bindingResult);
+    public User login(String email, String password) throws NoSuchAlgorithmException {
+        return userDAO.login(email, cripter(password));
     }
 
     @NotNull

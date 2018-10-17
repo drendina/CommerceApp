@@ -21,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public User login(String email, String password, BindingResult bindingResult)  {
+    public User login(String email, String password) {
         try{
         logger.info("Login: " + email + " - " + password );
 
@@ -35,9 +35,7 @@ public class UserDAOImpl implements UserDAO {
         }
         catch (Exception e ){
             logger.info("login failed");
-            ObjectError error = new ObjectError("Login error", "Login error");
-            bindingResult.addError(error);
-            return new User();
+            return null;
         }
     }
 

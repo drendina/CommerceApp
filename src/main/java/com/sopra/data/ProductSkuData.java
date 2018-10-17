@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductSkuData {
 
-    private String styleNumber; // baseproduct + idSku
+    private String styleNumber; // baseproduct_idSku
     private String description;
     private String name;
     private String image;

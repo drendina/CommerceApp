@@ -1,6 +1,6 @@
 $(document).ready( function(){
    refresh();
-  $('#submitLogin').on('click', refreshItemNumber);
+ // $('#submitLogin').on('click', refreshItemNumber);
 //TODO aggiornare numero degli item nel carrello
 });
 
@@ -20,21 +20,20 @@ function refresh(){
                 });
             },
             error: function () {
-                alert("Chiamata fallita!");
+                alert("Chiamata fallita! Mustache doesn't work");
             }
         }
     )
 
 }
-// TODO sistemare questa funzione che va sempre in error
+// TODO sistemare questa funzione che va sempre in error, modificare con oggetto carrello in sessione
+
 
 function refreshItemNumber(){
     $.ajax(
         {
-            type: "get",
             url: "/index/quantity",
-            dataType: "text",
-            success: function (resp) { alert(resp) }, //$('#qty').append(risposta);
+            success: function (resp) { alert(resp); $('#qty').html(resp + "elementi nel carrello"); },
             error: function() { alert("")}
         }
     )

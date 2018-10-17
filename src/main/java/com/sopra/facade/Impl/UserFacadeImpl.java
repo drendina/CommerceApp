@@ -29,19 +29,24 @@ public class UserFacadeImpl implements UserFacade {
     private CartService cartService;
 
     @Override
-    public UserData login(String email, String password, BindingResult bindingResult) throws NoSuchAlgorithmException{
-        User temp = userService.login(email,password, bindingResult);
-        if( temp == null){
-            logger.info(bindingResult);
-            return new UserData();
+    public UserData login(String emailLogin, String passwordLogin) throws NoSuchAlgorithmException{
+
+        User temp = userService.login(emailLogin,passwordLogin);
+        logger.info(temp);
+       /* if( temp == null){
+            return null;
         }
         else //temp != null
             {
             logger.info(temp.getIdUser() +" " +temp.getTitle()+""+ temp.getName()+""+ temp.getSurname()+""+ temp.getRole());
 
             return  new UserData(temp.getIdUser(), temp.getTitle(), temp.getName(), temp.getSurname(), temp.getRole());
-        }
-
+        }*/
+        // - - - - - -
+        if (temp != null){
+            return new UserData(temp.getIdUser(), temp.getTitle(), temp.getName(), temp.getSurname(), temp.getRole());
+        }else
+        {return null;}
     }
 
     @Override

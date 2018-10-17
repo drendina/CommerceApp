@@ -8,7 +8,7 @@ import org.springframework.validation.BindingResult;
 import java.security.NoSuchAlgorithmException;
 
 public interface UserService {
-    User login(String email, String password, BindingResult bindingResult) throws NoSuchAlgorithmException;
+    User login(String email, String password) throws NoSuchAlgorithmException;
 
     @NotNull String cripter(String password) throws NoSuchAlgorithmException;
 

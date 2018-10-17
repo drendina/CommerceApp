@@ -1,10 +1,16 @@
 package com.sopra.data;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class CartData {
 
     private int idCart;
     private int amount;
     private int idUser;
+
+    public CartData() {
+    }
 
     public CartData(int idCart, int amount, int idUser) {
         this.idCart = idCart;
