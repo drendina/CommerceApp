@@ -11,7 +11,7 @@
     
     <body>
 
-        <nav class="navbar navbar-light" style="background-color: #c6d4fd;">
+        <nav class="navbar navbar-light background">
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" title="Change language" aria-haspopup="true" aria-expanded="false" style="background-color: #c6d4fd">
                     <img border="0" alt="Select language" src="/risorse/img/icons/globe.png" width="36" height="36">
@@ -45,7 +45,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form:form id="registerForm" method="POST" action="/index/login" modelAttribute="login" >
+                                    <form:form id="registerForm" method="POST" action="/index/login"  modelAttribute="login" >
                                         <div class="form-group">
                                             <label for="emailInput">Email address</label>
                                             <form:input type="email" path="emailLogin" class="form-control" id="emailInput" placeholder="Enter email"/>
@@ -129,8 +129,8 @@
             <div class="contactUsContainer">
               <%--  <a target="_blank" title="Email us:" href="gucci@gucci.com"><img alt="Email us:" src="/risorse/img/icons/email.png" border=0 width="30" height="30"></a>
                 <a target="_blank" title="Call us:" href="gucci@gucci.com"><img alt="Email us:" src="/risorse/img/icons/email.png" border=0 width="30" height="30"></a>--%>
-                <button type="button" class="btn" data-toggle="popover" title="Email us:" data-content="gucci@gucci.com"><img border="0" alt="Gear" src="/risorse/img/icons/email.png" width="30" height="30" style="background-color: #c6d4fd"></button>
-                <button type="button" class="btn" data-toggle="popover" title="Call us at:" data-content="+39 0001234567"><img border="0" alt="Gear" src="/risorse/img/icons/phone.png" width="30" height="30" style="background-color: #c6d4fd"></button>
+                <button type="button" class="btn background" data-toggle="popover" title="Email us:" data-content="gucci@gucci.com"><img border="0" alt="Gear" src="/risorse/img/icons/email.png" width="30" height="30"></button>
+                <button type="button" class="btn background" data-toggle="popover" title="Call us at:" data-content="+39 0001234567"><img border="0" alt="Gear" src="/risorse/img/icons/phone.png" width="30" height="30"></button>
             </div>
 
             <%--<div class="dropup">

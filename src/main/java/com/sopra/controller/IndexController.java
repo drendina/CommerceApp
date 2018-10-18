@@ -27,6 +27,7 @@ import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
@@ -57,6 +58,8 @@ public class IndexController {
         logger.info("I.C. list is: "+ list);
         return list;
     }
+
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/changeLanguageEnglish" )
     public String changeLanguageEnglish( HttpServletResponse response){
@@ -106,6 +109,18 @@ public class IndexController {
 
     @Resource(name = "sessionBeans")
     private SessionBeans sessionBeans;
+
+    @RequestMapping(value = "/error", method = GET)
+    public boolean formErrors (@Valid @ModelAttribute ("login") LoginForm loginForm, BindingResult bindingResult) throws NoSuchAlgorithmException{
+        UserData loggedUser = userFacade.login(loginForm.getEmailLogin(),loginForm.getPasswordLogin());
+            if(loggedUser == null) {
+                ObjectError error = new ObjectError("loggedUser", "errore");
+                bindingResult.addError(error);
+                return true;
+            }
+        return false;
+        }
+
 
     @RequestMapping(value = "/login", method = POST)
     public ModelAndView login (HttpServletRequest request,

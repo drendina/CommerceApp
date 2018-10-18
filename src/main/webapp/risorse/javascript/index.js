@@ -2,6 +2,7 @@ $(document).ready( function(){
    refresh();
  // $('#submitLogin').on('click', refreshItemNumber);
 //TODO aggiornare numero degli item nel carrello
+    $('#submitLogin').on('click', checkLogin);
 });
 
 function refresh(){
@@ -28,7 +29,6 @@ function refresh(){
 }
 // TODO sistemare questa funzione che va sempre in error, modificare con oggetto carrello in sessione
 
-
 function refreshItemNumber(){
     $.ajax(
         {
@@ -38,4 +38,18 @@ function refreshItemNumber(){
         }
     )
 }
+function checkLogin(){
+    $.ajax({
+        type: 'get',
+        url: 'index/error',
+        dataType: "boolean",
+        success: function(risposta){
+            if(risposta==true){
 
+            }
+            else
+            {return 'index/login'}
+        }
+
+    })
+}

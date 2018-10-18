@@ -28,4 +28,5 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="/risorse/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/risorse/javascript/index.js"></script>
+<script type="text/javascript" src="/risorse/javascript/everywhere.js"></script>
 
