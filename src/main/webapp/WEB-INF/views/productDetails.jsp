@@ -10,17 +10,19 @@
                     <h1>PRODUCT DETAILS</h1>
                      <%--${productData}--%>
             <%-- --%>
-                <img class="prodImage" src="/risorse/img/products/${productData.image}" height="400px" width="400px">
+            <img class="prodImage" src="/risorse/img/products/${productData.image}" height="400px" width="400px">
             
             <div id="information" class="floating product">
                 <h2>${productData.name}</h2>
                 <h5>${productData.description}</h5>
                 <h3>
-                    CODICE: 200110${productData.idProduct}000
+                    CODICE: 200110-${productData.idProduct}-000
                     <br>
                     COLORE: ${productData.colore}
                     <br>
                     TESSUTO: ${productData.tessuto}
+                    <br>
+                    Prezzo:
                 </h3>
                 
                 <%--<c:forEach items="${listaSku}" var="S">--%>
@@ -37,7 +39,7 @@
                    
                         <c:forEach items="${listaSku}" var="x">
                             <button id="productSelectBtn"><a href="/cart/addToCart?idSku=${x.idSku}"/>${x.size}</button>
-                            ${x.size}
+                            <%--${x.size}--%>
                            
                         </c:forEach>
                         

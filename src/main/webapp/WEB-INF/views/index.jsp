@@ -4,20 +4,21 @@
 
     <div class="container" id="nav">
         <div class="row">
-            <div class="col"></div>
+            <%--<div class="col"></div>--%>
             <div class="col-10">
-                <script id="template" type="x-tmpl-mustache">
-                    <div>
-                        <a href="/product/productDetails?idProduct={{idProduct}}"><img src="/risorse/img/products/{{image}}" width="200" height="200"></a>
-                        <span>
-                            {{name}}
-                            {{colore}}
-                        </span>
-                    </div>
-            </script>
-                <div id="showData"></div>
+
+                    <script id="template" type="x-tmpl-mustache">
+                        <div class="card">
+                            <a href="/product/productDetails?idProduct={{idProduct}}"><img src="/risorse/img/products/{{image}}" width="300" height="300"></a>
+                            <div class="card-body">
+                                <%--<h5 class="card-title"> {{name}} </h5>--%>
+                                <%--<p class="card-text">{{description}}</p>--%>
+                            </div>
+                        </div>
+                    </script>
+                <div class="card-group" id="showData"></div>
             </div>
-            <div class="col"></div>
+            <%--<div class="col"></div>--%>
         </div>
     </div>
 

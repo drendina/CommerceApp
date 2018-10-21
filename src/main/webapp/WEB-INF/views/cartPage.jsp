@@ -9,6 +9,18 @@
         <div id="cartItems">
             <h1>CARTPAGE</h1>
             <hr>
+            <%--<script id="template" type="x-tmpl-mustache">
+                <div class="card">
+                    <a href="/product/productDetails?idProduct={{idProduct}}"><img src="/risorse/img/products/{{image}}" width="300" height="300"></a>
+                    <div class="card-body">
+
+                        &lt;%&ndash;<h5 class="card-title"> {{name}} </h5>&ndash;%&gt;
+                        &lt;%&ndash;<p class="card-text">{{description}}</p>&ndash;%&gt;
+                    </div>
+                </div>
+            </script>
+            <div class="card-group" id="showData"></div>--%>
+
             <%--TODO lista di elementi con mustache--%>
             <table>
                 <%--${itemList}--%>
@@ -19,6 +31,9 @@
                         <td> ${item.price} </td>
                     </tr>--%>
                     ${item}
+                    ${item.idSku}
+                    ${item.idCart}
+                    ${item.idSku_cart}
                 </c:forEach>
             </table>
         </div>

@@ -2,10 +2,12 @@ package com.sopra.controller;
 
 import com.sopra.facade.ProductDataFacade;
 import com.sopra.facade.SkuFacade;
+import com.sopra.form.LoginForm;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,13 +30,14 @@ public class ProductController {
     @Autowired
     private SkuFacade skuFacade;
     @RequestMapping(value = "/productDetails")
-    public ModelAndView deployProductHomepage(@RequestParam int idProduct ){
+    public ModelAndView deployProductHomepage(@RequestParam int idProduct, @ModelAttribute("login") LoginForm loginForm ){
         logger.info("Deploying productDetailsPage");
         logger.info("idProduct: " + idProduct);
 
         ModelAndView mv = new ModelAndView("productDetails");
         mv.addObject("productData", productDataFacade.getProductDataById(idProduct));
         mv.addObject("listaSku", skuFacade.getSkuDataList(idProduct));
+        mv.addObject("login", loginForm);
         return mv;
     }
 
