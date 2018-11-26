@@ -7,4 +7,6 @@ import java.util.List;
 public interface OrderService {
     int insertOrder (Order order);
     void insertItems(List skuOrderList);
+    List<Order> getOrders(int idUser);
+
 }

@@ -10,10 +10,10 @@
                     <script id="template" type="x-tmpl-mustache">
                         <div class="card">
                             <a href="/product/productDetails?idProduct={{idProduct}}"><img src="/risorse/img/products/{{image}}" width="300" height="300"></a>
-                            <div class="card-body">
-                                <%--<h5 class="card-title"> {{name}} </h5>--%>
-                                <%--<p class="card-text">{{description}}</p>--%>
-                            </div>
+                            <%--<div class="card-body">
+                                &lt;%&ndash;<h5 class="card-title"> {{name}} </h5>&ndash;%&gt;
+                                &lt;%&ndash;<p class="card-text">{{description}}</p>&ndash;%&gt;
+                            </div>--%>
                         </div>
                     </script>
                 <div class="card-group" id="showData"></div>
@@ -27,7 +27,7 @@
 <script src="/risorse/node_modules/jquery/dist/jquery.js"></script>
 <script src="/risorse/node_modules/mustache/mustache.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<script src="/risorse/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="/risorse/node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/risorse/javascript/index.js"></script>
 <script type="text/javascript" src="/risorse/javascript/everywhere.js"></script>
 

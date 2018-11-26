@@ -34,10 +34,7 @@ public class OrderController {
     private CartFacade cartFacade;
 
     @Autowired
-    private SkuOrderFacade skuOrderFacade;
-
-    @Autowired
-    private StockFacade stockFacade;
+    private SkuFacade skuFacade;
 
     @Autowired
     private CartDAO cartDAO;
@@ -79,7 +76,7 @@ public class OrderController {
         }
 
         logger.info(prodList + "  " + prodListOrder);
-        skuOrderFacade.insertItems(prodListOrder);
+        skuFacade.insertItems(prodListOrder);
 //        cartFacade.deleteItems(prodList);
 
         int[] stockUpdate = new int[size];
@@ -91,7 +88,7 @@ public class OrderController {
             stockUpdate[i] = temp.getIdSku();
         }
         logger.info(stockUpdate);
-        stockFacade.updateStock(stockUpdate);
+        skuFacade.updateStock(stockUpdate);
 
 //      CANCELLARE ELEMENTI DAL CARRELLO
         cartFacade.deleteItems(prodList);

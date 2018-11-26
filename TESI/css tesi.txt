@@ -1,0 +1,26 @@
+ .floating{
+     float: left;
+ }
+ #logo{
+     width: 50%;
+ }
+ #cart{
+     width: 20%;
+ }
+ #login{
+     width: 30%;
+ }
+ #imgLogo{
+     width: 50%;
+ }
+ #imgLogo img{
+     max-width: 100%;
+
+ }
+ .product{
+     width: 50%;
+ }
+
+ .thitrythree{
+     width: 33%;
+ }

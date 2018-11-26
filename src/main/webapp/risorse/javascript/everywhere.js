@@ -1,3 +1,5 @@
 $(function () {
-    $('[data-toggle="popover"]').popover()
-})
+    $('navbar-nav').on('mouseover', function () {
+        $('navbarDropdown').show()
+    } )
+});

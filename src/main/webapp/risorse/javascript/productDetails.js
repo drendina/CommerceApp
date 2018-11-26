@@ -1,6 +1,8 @@
-$(document).ready( function() {
-    refresh();
- $('#productSelectBtn').on('click' , addToCart);
+/*$(document).ready( function() {
+/!* $('#addToCart').on('click' , function (idSku) {
+        url:"/cart/addToCart?idSku="+idSku
+        }
+     )*!/
 });
 
 function refresh(){
@@ -24,8 +26,10 @@ function refresh(){
             }
         }
     )
-}
+}*/
 
-function addToCart(){
-    alert('prodotto aggiunto al carrello');
+function addToCart(idSku){
+    alert('Il prodotto è stato aggiunto al carrello con successo!');
+    $.ajax({ url:"/cart/addToCart?idSku="+idSku})
+
 }

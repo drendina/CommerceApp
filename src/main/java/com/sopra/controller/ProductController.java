@@ -1,11 +1,10 @@
 package com.sopra.controller;
 
-import com.sopra.facade.ProductDataFacade;
+import com.sopra.facade.ProductFacade;
 import com.sopra.facade.SkuFacade;
 import com.sopra.form.LoginForm;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -25,7 +23,8 @@ public class ProductController {
     private static final Logger logger = Logger.getLogger(ProductController.class);
 
     @Autowired
-    private ProductDataFacade productDataFacade;
+    private ProductFacade productFacade;
+
 
     @Autowired
     private SkuFacade skuFacade;
@@ -34,8 +33,8 @@ public class ProductController {
         logger.info("Deploying productDetailsPage");
         logger.info("idProduct: " + idProduct);
 
-        ModelAndView mv = new ModelAndView("productDetails");
-        mv.addObject("productData", productDataFacade.getProductDataById(idProduct));
+        ModelAndView mv = new ModelAndView("productDetailsPage");
+        mv.addObject("productData", productFacade.getProductDataById(idProduct));
         mv.addObject("listaSku", skuFacade.getSkuDataList(idProduct));
         mv.addObject("login", loginForm);
         return mv;

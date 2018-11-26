@@ -1,0 +1,58 @@
+<h3>Image Upload:</h3>
+      Select an image to upload: <br />
+      <form action = "upload" method = "post"
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" size = "50" />
+         <input type = "hidden" name = "ownerId" value="${employeeDto.idDTO }"/>
+         <br />
+         <button class="btn btn-default" type="submit" value="submit">Upload photo</button>
+      </form>
+
+-------------------------
+
+@RequestMapping(value = "/upload", method = {RequestMethod.POST})
+	public String upload(@RequestParam("file") MultipartFile filez,@RequestParam("ownerId") Integer ownerId) throws IOException {
+
+		saver.saveToPath(filez);	
+		pri.publish("Employee n? "+ownerId+" is uploading an image");
+		EmployeeDTO imageToSaveEmployee = es.retrieveById(ownerId);
+		imageToSaveEmployee.setImageDTO(saver.getPathToString(filez));
+		es.update(imageToSaveEmployee);				    
+		return "uploaded";
+	}
+
+--------------------------
+@Service
+public class SavePathImpl implements SavePath {
+	
+	String userDir = System.getProperty("user.dir");
+	
+	
+	
+	public String uploadedFolder = userDir+"\\src\\main\\webapp\\images\\";
+
+	private static final String JSP_PATH = "/images/";
+	
+	@Autowired
+	ProducerResourceInter pri;
+	
+	@Override
+	public void saveToPath(MultipartFile fileToSave) throws IOException {
+		
+		byte[] bytes = fileToSave.getBytes();
+		
+		Path path = Paths.get(uploadedFolder + fileToSave.getOriginalFilename());
+        Files.write(path, bytes);
+		
+	}
+	
+	@Override
+	public String getPathToString(MultipartFile fileToGetPath) {
+		String filepath = JSP_PATH+fileToGetPath.getOriginalFilename();
+		return filepath;
+	}
+
+---------
+
+Il metodo importante è saveToPath, prendi un file (fileToSave) ne prendi i byte (bytes)
+e col metodo Files.write scrivi questo file su una path desiderata.

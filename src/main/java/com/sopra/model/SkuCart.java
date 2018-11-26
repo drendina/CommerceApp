@@ -1,11 +1,7 @@
 package com.sopra.model;
 
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Repository
 @Entity
@@ -18,8 +14,7 @@ public class SkuCart {
     private int idSku;
     private int idCart;
 
-    public SkuCart() {
-    }
+    public SkuCart() {}
 
     public SkuCart(int idSku, int idCart) {
         this.idSku = idSku;

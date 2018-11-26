@@ -4,7 +4,6 @@ import com.sopra.data.UserData;
 import com.sopra.facade.UserFacade;
 import com.sopra.form.CompleteUserForm;
 import com.sopra.form.LoginForm;
-import com.sopra.model.User;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.transaction.Transactional;
-import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
-import javax.validation.Validator;
 import java.security.NoSuchAlgorithmException;
-import java.util.Set;
 
 @Controller
 @Transactional
@@ -32,9 +28,10 @@ public class FormController {
 
 
 
+
     @RequestMapping(method = RequestMethod.GET, value = "/registration")
     public ModelAndView deployFormPage(@ModelAttribute ("login") LoginForm loginForm,
-                                       @ModelAttribute("completeUserForm") CompleteUserForm completeUserForm     ){
+                                       @ModelAttribute("completeUserForm") CompleteUserForm completeUserForm){
         logger.info("Deploying form page");
         return new ModelAndView("formPage");
     }
@@ -51,11 +48,13 @@ public class FormController {
         }
         else {
             logger.info("Submitting form");
-            userFacade.manageInsert(completeUserForm);
+            userFacade.manageInsert(completeUserForm, false);
 
             return new ModelAndView("index", "user", userData).addObject("login", new LoginForm());
         }
     }
+
+
 
 
 

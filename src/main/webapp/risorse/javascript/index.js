@@ -25,7 +25,6 @@ function refresh(){
             }
         }
     )
-
 }
 // TODO sistemare questa funzione che va sempre in error, modificare con oggetto carrello in sessione
 

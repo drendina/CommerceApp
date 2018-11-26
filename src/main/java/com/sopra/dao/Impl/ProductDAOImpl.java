@@ -1,6 +1,7 @@
 package com.sopra.dao.Impl;
 
 import com.sopra.dao.ProductDAO;
+import com.sopra.data.ProductData;
 import com.sopra.model.Product;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -27,4 +29,27 @@ public class ProductDAOImpl implements ProductDAO {
             .get(0);
 
     }
+
+    @Override
+    public List<Product> getListProductByGenderAndCategory(String gender, String category) {
+        return (List<Product>) sessionFactory.getCurrentSession()
+                .createQuery("from Product P where P.gender = :gender and P.category = :category ")
+                .setParameter("gender", gender)
+                .setParameter("category", category)
+                .list();
+    }
+
+    @Override
+    public void insertProduct(Product product) {
+        sessionFactory.getCurrentSession().save(product);
+    }
+
+    @Override
+    public List getAllProduct() {
+       return sessionFactory.getCurrentSession()
+                .createQuery("FROM Product")
+                .list();
+    }
+
 }
+

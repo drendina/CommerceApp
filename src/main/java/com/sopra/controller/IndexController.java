@@ -4,11 +4,10 @@ import com.sopra.beans.SessionBeans;
 import com.sopra.data.CartData;
 import com.sopra.data.UserData;
 import com.sopra.facade.CartFacade;
-import com.sopra.facade.IndexFacade;
+import com.sopra.facade.ProductFacade;
 import com.sopra.facade.UserFacade;
 import com.sopra.form.CompleteUserForm;
 import com.sopra.form.LoginForm;
-import com.sopra.interceptors.CustomInterceptor;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +36,7 @@ public class IndexController {
 
     private static final Logger logger = Logger.getLogger(IndexController.class);
     @Autowired
-    private IndexFacade indexFacade;
+    private ProductFacade productFacade;
 
     @Autowired
     private UserFacade userFacade;
@@ -49,12 +48,12 @@ public class IndexController {
     @RequestMapping(value = {"/", ""})
     public ModelAndView deployHomepage(@ModelAttribute ("login") LoginForm loginForm){
         logger.info("Deploying Homepage");
-        return new ModelAndView("index");
+        return new ModelAndView("index").addObject("pageName", "index");
     }
     @RequestMapping(value = "/getAllProduct", method = RequestMethod.GET)
     public @ResponseBody List getAllProduct(){
         logger.info("Getting product list from database");
-        List list = indexFacade.getAllProduct();
+        List list = productFacade.getAllProduct();
         logger.info("I.C. list is: "+ list);
         return list;
     }

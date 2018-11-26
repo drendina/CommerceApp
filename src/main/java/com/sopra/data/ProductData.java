@@ -5,31 +5,34 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductData {
 
-    private int idProduct;
+    private String code;
     private String description;
     private String name;
     private String image;
     private String colore;
     private String tessuto;
+    private String category;
+    private String gender;
 
     public ProductData() {
     }
 
-    public ProductData(int idProduct, String description, String name, String image, String colore, String tessuto) {
-        this.idProduct = idProduct;
+    public ProductData(String code, String description, String name, String image, String colore, String tessuto, String category, String gender) {
         this.description = description;
         this.name = name;
         this.image = image;
         this.colore = colore;
         this.tessuto = tessuto;
+        this.category = category;
+        this.gender = gender;
     }
 
-    public int getIdProduct() {
-        return idProduct;
+    public String getCode() {
+        return code;
     }
 
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getDescription() {
@@ -72,15 +75,33 @@ public class ProductData {
         this.tessuto = tessuto;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     @Override
     public String toString() {
         return "ProductData{" +
-                "idProduct=" + idProduct +
-                ", description='" + description + '\'' +
+                " description='" + description + '\'' +
+                ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", image='" + image + '\'' +
                 ", colore='" + colore + '\'' +
                 ", tessuto='" + tessuto + '\'' +
+                ", category='" + category + '\'' +
+                ", gender='" + gender + '\'' +
                 '}';
     }
 }

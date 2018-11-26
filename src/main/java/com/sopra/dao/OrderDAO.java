@@ -7,4 +7,5 @@ import java.util.List;
 public interface OrderDAO {
     int insertOrder(Order order);
     void insertItems(List skuOrderList);
+    List<Order> getOrdersByIdUser(int idUser);
 }

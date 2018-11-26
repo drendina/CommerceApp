@@ -4,31 +4,24 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.io.Serializable;
+
 @Repository
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idOrder;
 
-    @Column
-    private String birthdate;
-
-    @Column
-    private int idUser;
-
-    @Column
-    private int idAddress;
+    @Column @GeneratedValue(strategy = GenerationType.AUTO) @Id private int idOrder;
+    @Column private String orderDate;
+    @Column private int idUser;
+    @Column private int amount;
 
     public Order() {
     }
 
-    public Order(String birthdate, int idUser, int idAddress) {
-        this.birthdate = birthdate;
+    public Order(String orderDate, int idUser, int amount) {
+        this.orderDate = orderDate;
         this.idUser = idUser;
-        this.idAddress = idAddress;
+        this.amount = amount;
     }
 
     public int getIdOrder() {
@@ -39,12 +32,12 @@ public class Order implements Serializable {
         this.idOrder = idOrder;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getOrderDate() {
+        return orderDate;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
     public int getIdUser() {
@@ -55,21 +48,21 @@ public class Order implements Serializable {
         this.idUser = idUser;
     }
 
-    public int getIdAddress() {
-        return idAddress;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setIdAddress(int idAddress) {
-        this.idAddress = idAddress;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     @Override
     public String toString() {
         return "Order{" +
                 "idOrder=" + idOrder +
-                ", birthdate='" + birthdate + '\'' +
+                ", orderDate='" + orderDate + '\'' +
                 ", idUser=" + idUser +
-                ", idAddress=" + idAddress +
+                ", amount=" + amount +
                 '}';
     }
 }

@@ -25,4 +25,10 @@ public class OrderServiceImpl implements OrderService {
     public void insertItems(List skuOrderList) {
         orderDAO.insertItems(skuOrderList);
     }
+
+    @Override
+    public List<Order> getOrders(int idUser) {
+        List<Order> orderList = orderDAO.getOrdersByIdUser(idUser);
+        return null;
+    }
 }

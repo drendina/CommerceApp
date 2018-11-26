@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 @Controller
@@ -12,8 +13,8 @@ import javax.transaction.Transactional;
 public class AccountController {
 
     @RequestMapping(value = {"/", ""})
-    public ModelAndView deployHomepage() {
-        ModelAndView mv = new ModelAndView("myAccountPage");
-        return mv;
+    public ModelAndView deployAccountControllerPage(HttpServletRequest request) {
+        return new ModelAndView("myAccountPage")
+                .addObject("loggedUser", request.getSession().getAttribute("loggedUser"));
     }
 }

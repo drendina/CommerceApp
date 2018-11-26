@@ -1,26 +1,19 @@
 package com.sopra.model;
 
-
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Repository
 @Entity
 @Table(name = "cart")
 public class Cart implements Serializable {
 
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idCart;
-
-    @Column
-    private int amount;
-
-    @Column
-    private int idUser;
+    @Column @GeneratedValue(strategy = GenerationType.AUTO) @Id private int idCart;
+    @Column private int amount;
+    @Column private int idUser;
 
     public Cart() {
         this.amount = 0;

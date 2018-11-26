@@ -35,4 +35,13 @@ public class SkuDAOImpl implements SkuDAO {
                 .setParameter("idProduct", idProduct)
                 .list();
     }
+
+    @Override
+    public Sku getSkuBy_IdSku(int idSku) {
+        return (Sku) sessionFactory.getCurrentSession()
+                .createQuery("from Sku where idSku = :idSku")
+                .setParameter("idSku", idSku)
+                .list().get(0);
+
+    }
 }

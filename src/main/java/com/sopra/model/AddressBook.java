@@ -29,6 +29,7 @@ public class AddressBook implements Serializable {
 
     @Column
     private String nation;
+
     public AddressBook(){}
 
     public AddressBook(String address, String number, String cap, String city, String nation ){

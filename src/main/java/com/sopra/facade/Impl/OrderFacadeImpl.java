@@ -15,8 +15,8 @@ public class OrderFacadeImpl implements OrderFacade {
     @Autowired
     private OrderService orderService;
     @Override
-    public int insertOrder(String nowDate, int idUser, int idAddress) {
-        Order order = new Order (nowDate, idUser, idAddress);
+    public int insertOrder(String nowDate, int idUser, int amount) {
+        Order order = new Order (nowDate, idUser, amount);
         return orderService.insertOrder(order);
     }
 }

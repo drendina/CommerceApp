@@ -24,30 +24,30 @@
         --%>
             <h2>REGISTRATION</h2>
             <form:form class="needs-validation" method="POST" action="/form/submit" modelAttribute="completeUserForm">
-                <h4>Personal data</h4>
+            <h4>Personal data</h4>
 
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <label for="title">Title</label>
-                        <form:select class="form-control" path="title">
-                            <option selected>Choose title</option>
-                            <option value="Mr">Mr.</option>
-                            <option value="Miss">Miss</option>
-                            <option value="Mrs">Mrs.</option>
-                        </form:select>
-                    </div>
-                    <div class="form-group col-md-5">
-                        <label for="name">Name</label>
-                        <form:input type="text" class="form-control" path="name" placeholder="John" />
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div class="form-group col-md-5">
-                        <label for="surname">Surname</label>
-                        <form:input type="text" class="form-control" path="surname" placeholder="Doe"/>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="title">Title</label>
+                    <form:select class="form-control" path="title">
+                        <option selected>Choose title</option>
+                        <option value="Mr">Mr.</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Mrs">Mrs.</option>
+                    </form:select>
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="name">Name</label>
+                    <form:input type="text" class="form-control" path="name" placeholder="John" />
+                    <div class="valid-feedback">
+                        Looks good!
                     </div>
                 </div>
+                <div class="form-group col-md-5">
+                    <label for="surname">Surname</label>
+                    <form:input type="text" class="form-control" path="surname" placeholder="Doe"/>
+                </div>
+            </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-10">

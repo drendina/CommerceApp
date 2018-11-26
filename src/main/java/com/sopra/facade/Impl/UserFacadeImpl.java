@@ -50,13 +50,18 @@ public class UserFacadeImpl implements UserFacade {
     }
 
     @Override
-    public void manageInsert(CompleteUserForm cuf) throws NoSuchAlgorithmException {
+    public void manageInsert(CompleteUserForm cuf, Boolean admin) throws NoSuchAlgorithmException {
         logger.info("Object: "+ cuf);
         AddressBook tempAddressBook = new AddressBook(cuf.getAddress(), cuf.getNumber(), cuf.getCap(), cuf.getCity(), cuf.getNation());
         logger.info(tempAddressBook);
         int idAddressBook = userService.insertAddress(tempAddressBook);
         String passwordCripted = userService.cripter(cuf.getPassword());
-        User tempUser = new User(cuf.getTitle(),cuf.getName(),cuf.getSurname(), idAddressBook, cuf.getEmail(), passwordCripted ,"USER", cuf.getNewsletter());
+        String role;
+        if (admin.equals(true))
+        {role = "ADMIN";}
+        else
+        {role = "USER";}
+        User tempUser = new User(cuf.getTitle(),cuf.getName(),cuf.getSurname(), idAddressBook, cuf.getEmail(), passwordCripted , role, cuf.getNewsletter());
         logger.info(tempUser);
         int idUser = userService.insertUser(tempUser);
         cartService.createCartBindWithUser(idUser);

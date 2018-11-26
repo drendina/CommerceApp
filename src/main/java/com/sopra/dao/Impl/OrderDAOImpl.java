@@ -34,4 +34,12 @@ public class OrderDAOImpl  implements OrderDAO {
             sessionFactory.getCurrentSession().save(temp);
         }
     }
+
+    @Override
+    public List<Order> getOrdersByIdUser(int idUser) {
+        return (List<Order>)sessionFactory.getCurrentSession()
+                .createQuery("from Order where idUser = :idUser")
+                .setParameter("idUser", idUser)
+                .list();
+    }
 }

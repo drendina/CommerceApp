@@ -66,6 +66,11 @@ h2{
 .background{
     background-color: #c6d4fd;
 }
+
+.card{
+    border:none;
+    background-color: transparent;
+}
 #body{
     background-color: #E7E7E7;
 }

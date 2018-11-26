@@ -1,6 +1,7 @@
 package com.sopra.facade.Impl;
 
 import com.sopra.data.CartData;
+import com.sopra.data.CartPageData;
 import com.sopra.facade.CartFacade;
 import com.sopra.model.Cart;
 import com.sopra.service.CartService;
@@ -31,6 +32,11 @@ public class CartFacadeImpl implements CartFacade {
     }
 
     @Override
+    public void removeFromCart(int idSku, int idCart) {
+        cartService.removeFromCart(idSku, idCart);
+    }
+
+    @Override
     public int getCartQty (int idCart) {
         logger.info("Get cart quantity from cart: " + idCart);
         return cartService.getCartQty(idCart);
@@ -50,5 +56,15 @@ public class CartFacadeImpl implements CartFacade {
     @Override
     public void deleteItems(List skuCartList) {
         cartService.deleteItems(skuCartList);
+    }
+
+    @Override
+    public List<CartPageData> getCart(int idUser) {
+        return cartService.getCart(idUser);
+    }
+
+    @Override
+    public int getTotal(List<CartPageData> itemList) {
+        return cartService.getTotal(itemList);
     }
 }

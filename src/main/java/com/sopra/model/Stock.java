@@ -4,21 +4,17 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.io.Serializable;
+
 @Repository
 @Entity
 @Table(name = "stock")
 public class Stock implements Serializable {
 
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idStock;
-
-    @Column
-    private int remainingItems;
-
-    @Column
-    private int idSku;
+    @Column private int idStock;
+    @Column private int remainingItems;
+    @Column private int idSku;
 
     public int getIdStock() {
         return idStock;

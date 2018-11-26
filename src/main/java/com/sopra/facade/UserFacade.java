@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 public interface UserFacade {
     UserData login(String email, String password) throws NoSuchAlgorithmException;
 
-    void manageInsert(CompleteUserForm cuf) throws NoSuchAlgorithmException;
+    void manageInsert(CompleteUserForm cuf, Boolean admin) throws NoSuchAlgorithmException;
 
     int getIdAddressByIdUser (int idUser);
 

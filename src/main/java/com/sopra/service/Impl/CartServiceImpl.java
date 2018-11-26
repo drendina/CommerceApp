@@ -1,6 +1,7 @@
 package com.sopra.service.Impl;
 
 import com.sopra.dao.CartDAO;
+import com.sopra.data.CartPageData;
 import com.sopra.model.Cart;
 import com.sopra.service.CartService;
 import org.apache.log4j.Logger;
@@ -27,6 +28,11 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public void removeFromCart(int idSku, int idCart) {
+        cartDAO.removeFromCart(idSku, idCart);
+    }
+
+    @Override
     public void createCartBindWithUser(int idUser) {
         cartDAO.createCartBindWithUser(idUser);
     }
@@ -49,5 +55,19 @@ public class CartServiceImpl implements CartService {
     @Override
     public void deleteItems(List skuCartList) {
         cartDAO.deleteItems(skuCartList);
+    }
+
+    @Override
+    public List<CartPageData> getCart(int idUser) {
+        return cartDAO.getCart(idUser);
+    }
+
+    @Override
+    public int getTotal(List<CartPageData> itemList) {
+        int total = 0;
+        for (CartPageData elm: itemList)
+            { total = total + elm.getCumulative_size_price();
+         }
+        return total;
     }
 }

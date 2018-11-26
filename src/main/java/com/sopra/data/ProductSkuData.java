@@ -5,34 +5,48 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductSkuData {
 
-    private String styleNumber; // baseproduct_idSku
+    //private String styleNumber; // baseproduct_idSku
+    private int idSku;
     private String description;
     private String name;
     private String image;
     private String colore;
     private String tessuto;
+    private String category;
+    private String gender;
     private String size;
     private int price;
 
     public ProductSkuData(){}
 
-    public ProductSkuData(String styleNumber, String description, String name, String image, String colore, String tessuto, String size, int price) {
-        this.styleNumber = styleNumber;
+    public ProductSkuData(int idSku, String description, String name, String image, String colore, String tessuto, String category, String gender, String size, int price) {
+        //this.styleNumber = styleNumber;
+        this.idSku = idSku;
         this.description = description;
         this.name = name;
         this.image = image;
         this.colore = colore;
         this.tessuto = tessuto;
+        this.category=category;
+        this.gender = gender;
         this.size = size;
         this.price = price;
     }
 
-    public String getStyleNumber() {
+   /* public String getStyleNumber() {
         return styleNumber;
     }
 
     public void setStyleNumber(String styleNumber) {
         this.styleNumber = styleNumber;
+    }*/
+
+    public int getIdSku() {
+        return idSku;
+    }
+
+    public void setIdSku(int idSku) {
+        this.idSku = idSku;
     }
 
     public String getDescription() {
@@ -75,6 +89,22 @@ public class ProductSkuData {
         this.tessuto = tessuto;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getSize() {
         return size;
     }
@@ -91,10 +121,11 @@ public class ProductSkuData {
         this.price = price;
     }
 
+
     @Override
     public String toString() {
-        return "SkuData{" +
-                "styleNumber=" + styleNumber +
+        return "ProductSkuData{" +
+                " idSku=" + idSku +
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +
                 ", image='" + image + '\'' +

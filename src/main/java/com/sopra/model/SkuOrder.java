@@ -18,8 +18,7 @@ public class SkuOrder {
     private int idSku;
     private int idOrder;
 
-    public SkuOrder() {
-    }
+    public SkuOrder() {}
 
     public SkuOrder(int idSku, int idOrder) {
         this.idSku = idSku;

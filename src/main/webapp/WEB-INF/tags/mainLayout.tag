@@ -9,7 +9,7 @@
         <link href="<c:url value="/risorse/style.css" />" rel="stylesheet">
     </head>
     
-    <body>
+    <body class="background">
 
         <nav class="navbar navbar-light background">
             <div class="dropdown">
@@ -107,6 +107,37 @@
 
         </nav>
 
+        <!-- Category navbar -->
+        <div class="container">
+            <div class="row justify-content-md-center background">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWomen" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Women
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/category?gender=Female&category=Bags">Bags</a>
+                                    <a class="dropdown-item" href="/category?gender=Female&category=Shoes">Shoes</a>
+                                    <a class="dropdown-item" href="/category?gender=Female&category=Dresses">Dresses</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMan" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Men
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/category?gender=Male&category=T-shirt">T-shirt</a>
+                                    <a class="dropdown-item" href="/category?gender=Male&category=Shoes">Shoes</a>
+                                    <a class="dropdown-item" href="/category?gender=Male&category=Jewellery">Jewellery</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
         <div class="container">
             <jsp:doBody />
         </div>
@@ -129,8 +160,9 @@
             <div class="contactUsContainer">
               <%--  <a target="_blank" title="Email us:" href="gucci@gucci.com"><img alt="Email us:" src="/risorse/img/icons/email.png" border=0 width="30" height="30"></a>
                 <a target="_blank" title="Call us:" href="gucci@gucci.com"><img alt="Email us:" src="/risorse/img/icons/email.png" border=0 width="30" height="30"></a>--%>
-                <button type="button" class="btn background" data-toggle="popover" title="Email us:" data-content="gucci@gucci.com"><img border="0" alt="Gear" src="/risorse/img/icons/email.png" width="30" height="30"></button>
-                <button type="button" class="btn background" data-toggle="popover" title="Call us at:" data-content="+39 0001234567"><img border="0" alt="Gear" src="/risorse/img/icons/phone.png" width="30" height="30"></button>
+                <button type="button" class="btn background" title="Email us:" data-content="gucci@gucci.com"><img border="0" alt="Gear" src="/risorse/img/icons/email.png" width="30" height="30"></button>
+                <div id ="email_show" class="hidden" style="display:none"><h2>gucci@gucci.com</h2></div>
+                  <button type="button" class="btn background" data-toggle="popover" title="Call us at:" data-content="+39 0001234567"><img border="0" alt="Gear" src="/risorse/img/icons/phone.png" width="30" height="30"></button>
             </div>
 
             <%--<div class="dropup">
@@ -168,7 +200,10 @@
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        </body>
+<%--
+            <script src="/risorse/node_modules/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+--%>
+    </body>
 
 
 </html>

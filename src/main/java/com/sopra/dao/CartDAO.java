@@ -1,5 +1,6 @@
 package com.sopra.dao;
 
+import com.sopra.data.CartPageData;
 import com.sopra.model.Cart;
 
 import java.util.List;
@@ -7,9 +8,11 @@ import java.util.List;
 public interface CartDAO {
     void createCart();
     void insertInto(int idSku, int idCart);
+    void removeFromCart(int idSku, int idCart);
     void createCartBindWithUser(int idUser);
     Cart getCartById(int idUser);
     List getProductList(int idUser);
     int getCartQty(int idCart);
     void deleteItems(List skuCartList);
+    List<CartPageData> getCart(int idUser);
 }

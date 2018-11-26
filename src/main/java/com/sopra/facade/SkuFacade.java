@@ -8,4 +8,8 @@ public interface SkuFacade {
 
     Sku retrieveSkuById(int id);
     List getSkuDataList (int idProduct);
+
+    void insertItems(List skuOrderList);
+
+    void updateStock(int[] stockUpdate);
 }

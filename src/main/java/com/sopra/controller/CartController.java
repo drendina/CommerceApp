@@ -1,6 +1,7 @@
 package com.sopra.controller;
 
 import com.sopra.data.CartData;
+import com.sopra.data.CartPageData;
 import com.sopra.data.UserData;
 import com.sopra.facade.CartFacade;
 import org.apache.log4j.Logger;
@@ -31,51 +32,60 @@ public class CartController {
 
     @RequestMapping(value = "/")
     public ModelAndView deployCartpage(HttpServletRequest request,
-                                       Model model,
                                        @ModelAttribute("user") UserData userData) {
         logger.info("Deploying Cartpage");
         logger.info(request.getSession().getAttribute("loggedUser"));
         int idUser = ((UserData) request.getSession().getAttribute("loggedUser")).getIdUser();
         CartData currentCart = cartFacade.getCartByid(idUser);
+/*
         List itemList = cartFacade.getProductList(idUser);
+*/
+        List<CartPageData> itemList= cartFacade.getCart(idUser);
+        int totalPrice = cartFacade.getTotal(itemList);
 
-        ModelAndView mv = new ModelAndView("cartPage");
-                mv.addObject("itemList", itemList);
-                mv.addObject("currentCart", currentCart);
-
-        return mv;
+        return new ModelAndView("cartPage")
+                .addObject("totalPrice", totalPrice)
+                .addObject("itemList", itemList)
+                .addObject("currentCart", currentCart);
     }
 
-    @RequestMapping(value = "/checkout")
-    public ModelAndView checkout(HttpSession session) {
-        int idUser = ((UserData) session.getAttribute("loggedUser")).getIdUser();
-        logger.info("go to checkout page");
-        List itemList = cartFacade.getProductList(idUser);
-        ModelAndView mv = new ModelAndView("checkout");
-        return new ModelAndView("checkout", "itemList" , itemList);
-    }
 
     @RequestMapping(value = "/addToCart", method = RequestMethod.GET)
-    public String addToCart(HttpSession session, @RequestParam int idSku) {
+    public void addToCart(HttpSession session, @RequestParam int idSku) {
         logger.info("Add to cart  - idSku: " + idSku);
-        UserData UserDataTEMP = (UserData)session.getAttribute("loggedUser");
+
+
+        /*UserData UserDataTEMP = (UserData)session.getAttribute("loggedUser");
         logger.info(UserDataTEMP);
         int idUser = UserDataTEMP.getIdUser();
-       logger.info("idUser: " + idUser);
+       logger.info("idUser: " + idUser);*/
+
+       int idUser = ((UserData) session.getAttribute("loggedUser")).getIdUser();
+        logger.info("idUser: " + idUser);
+
         CartData currentCart = cartFacade.getCartByid(idUser);
        logger.info("currentCart: " + currentCart);
         int idCart = currentCart.getIdCart();
       logger.info("idCart: " + idCart + " idSku: " + idSku);
        cartFacade.addToCart(idSku, idCart);
-
-        return "redirect:/index/";
     }
 
-    @RequestMapping(value = "/removeCart")
-    public void removeItemsFromCart(){
+    @RequestMapping(value = "/removeItem")
+    public String removeItemsFromCart(@RequestParam int idSku, @RequestParam int idCart){
+        cartFacade.removeFromCart(idSku, idCart);
+        return "redirect:/cart/";
 
     }
 
+    @RequestMapping(value = "/addToCartSmart", method = RequestMethod.GET)
+    public String addItemToCart(@RequestParam int idSku, @RequestParam int idCart){
+        cartFacade.addToCart(idSku, idCart);
+        return "redirect:/cart/";
+    }
 
+    @RequestMapping(value = "/showCart")
+    public List<CartPageData> retreiveItemsInCart(@RequestParam int idUser){
+        return cartFacade.getCart(idUser);
+    }
 
 }

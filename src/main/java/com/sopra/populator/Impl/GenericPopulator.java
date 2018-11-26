@@ -6,9 +6,7 @@ public class GenericPopulator implements Populator {
 
 
     @Override
-    public Object populate(Object sorurce, Object o) {
-
+    public Object populate(Object source, Object o) {
         return null;
-
     }
 }
